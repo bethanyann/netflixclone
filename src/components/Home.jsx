@@ -15,13 +15,13 @@ import NoImage from '../images/no_image.jpg';
 //always capitalize component names
 //curly brackets because we need an explicit return statement here 
 const Home = () => {
-    const { state, loading, error, setSearchTerm } = useHomeFetch();  //bringing the set search term here, which means when this gets updated in the search bar, the useHomeFetch() hook will be triggered again
+    const { state, loading, error, setSearchTerm, searchTerm } = useHomeFetch();  //bringing the set search term here, which means when this gets updated in the search bar, the useHomeFetch() hook will be triggered again
     console.log(state);
     
 
     return (
     <>
-        { state.results[0] ?
+        { state.results[0] && !searchTerm ?
                
             <HeroImage 
                 image={`${IMAGE_BASE_URL}${BACKDROP_SIZE}${state.results[0].backdrop_path}`}  //example of path https://image.tmdb.org/t/p/w1280/wcKFYIiVDvRURrzglV9kGu7fpfY.jpg
@@ -31,7 +31,7 @@ const Home = () => {
              : null
         }
         <SearchBar setSearchTerm={setSearchTerm} />
-        <Grid header='Popular Movies'>
+        <Grid header={ searchTerm ? 'Search Results' : 'Popular Movies'}>
             {state.results.map(movie => (
                 <Thumb key={movie.id} clickable={true} movieId={movie.id} image={movie.poster_path ? IMAGE_BASE_URL+POSTER_SIZE+movie.poster_path : NoImage }/>
             ))}

@@ -20,7 +20,7 @@ export const useHomeFetch = () => {
 
  //to test if the setSearchTerm effect is working in the search bar
  console.log(searchTerm);
- 
+
  const fetchMovies = async (page: number, searchTerm: string = "") => {
      try {
          setLoading(true);
@@ -44,11 +44,14 @@ export const useHomeFetch = () => {
 
     //initial render
     //put the useeffect hook here to call the fetchMovies function when we startup the application and the Home component mounts
+    //going to use this same hook for searching for movies too 
     useEffect(() => {
+        //wipe out the state to remove anything before fetching again
+        setState(initialState);
         fetchMovies(1)
-    }, []);
+    }, [searchTerm]); //this will trigger once on first render, and then it will also trigger when the search term changes
 
-    return { state, loading, error, setSearchTerm };
+    return { state, loading, error, setSearchTerm, searchTerm };
 };
 
 
