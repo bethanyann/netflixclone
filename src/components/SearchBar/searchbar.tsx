@@ -15,7 +15,11 @@ const SearchBar = ( setSearchTerm:React.SetStateAction<any> ) => {
             setSearchTerm(state);
         }, 700); //TODO - test & change this if 700 seems too long
         
-    }, [])
+        //to perform an action after the use effect has completed, put a return statement at the end of the effect
+        //this one is clearing out the timer so there aren't a lot of timers running in the background on each render of this component
+        return () => clearTimeout(timer);
+
+    }, [setSearchTerm, state]); //linting rules suggested these dependencies
 
     return (
         <Wrapper>

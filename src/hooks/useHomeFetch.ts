@@ -16,7 +16,7 @@ export const useHomeFetch = () => {
  const [loading, setLoading] = useState(false);
  const [error, setError] = useState(false); //use as a flag to detect error from api
 
- //create an initial state for resetting stuff
+ const [ searchTerm, setSearchTerm ] = useState('');
 
  const fetchMovies = async (page: number, searchTerm: string = "") => {
      try {
@@ -45,7 +45,7 @@ export const useHomeFetch = () => {
         fetchMovies(1)
     }, []);
 
-    return { state, loading, error};
+    return { state, loading, error, setSearchTerm };
 };
 
 

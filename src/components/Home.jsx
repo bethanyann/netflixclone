@@ -4,6 +4,9 @@ import { POSTER_SIZE, BACKDROP_SIZE, IMAGE_BASE_URL } from '../config';
 //components
 import HeroImage from './HeroImage/heroimage';
 import Grid from './Grid/grid';
+import Thumb from './Thumbnail/thumbnail';
+import Spinner from './Spinner/spinner';
+import SearchBar from './SearchBar/searchbar';
 //hooks
 import { useHomeFetch } from '../hooks/useHomeFetch';
 //image
@@ -12,7 +15,7 @@ import NoImage from '../images/no_image.jpg';
 //always capitalize component names
 //curly brackets because we need an explicit return statement here 
 const Home = () => {
-    const { state, loading, error } = useHomeFetch();
+    const { state, loading, error, setSearchTerm } = useHomeFetch();
     console.log(state);
     
 
@@ -27,13 +30,13 @@ const Home = () => {
             />  
              : null
         }
-
+        <SearchBar setSearchTerm={setSearchTerm} />
         <Grid header='Popular Movies'>
             {state.results.map(movie => (
-                <div key={movie.id}>{movie.title}</div>
+                <Thumb key={movie.id} clickable={true} movieId={movie.id} image={movie.poster_path ? IMAGE_BASE_URL+POSTER_SIZE+movie.poster_path : NoImage }/>
             ))}
         </Grid>
-    
+        <Spinner/>
     </>
     );
 }

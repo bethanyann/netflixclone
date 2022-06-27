@@ -16,7 +16,8 @@ export const Wrapper = styled.div`
 
 export const Content = styled.div`
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    grid-gap: 2rem;
+    // set to repeat the columns, and then set it to auto fill, and then when its 200px wide it cant' go lower so it removes 1 column instead to make it responsive for mobile
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); //css grid syntax here for a responsive grid
+    grid-gap: 2rem; //spacing between rows/columns
 `;
 
