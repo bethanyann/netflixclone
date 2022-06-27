@@ -8,9 +8,9 @@ export const Wrapper = styled.div<ImageWrapper>`
     background: linear-gradient(
         to bottom,
         rgba(0, 0, 0, 0) 41%,
-        rgba(0, 0, 0, 0.65) 100%
+        rgba(0, 0, 0, 0.9) 100%
     ),
-    url(${props => props.image}), var(--darkGrey);
+    url(${props => props.image}), var(--darkGray);
     
     background-size: 100%, cover;
     background-position: center;
@@ -25,6 +25,11 @@ export const Wrapper = styled.div<ImageWrapper>`
         to {
             opacity: 1;
         }
+    }
+
+    
+    @media screen and (max-width: 720px){
+       height: 400px;
     }
 `;
 
@@ -63,5 +68,6 @@ export const Text = styled.div`
 
     @media screen and (max-width: 720px){
         max-width: 100%;
+        bottom: 10px;
     }
 `;

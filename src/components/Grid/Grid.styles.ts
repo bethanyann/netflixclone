@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-    max-width: var(--maxWidth);
+    //TODO - test and see if I can get more movies to display if I change the width here 
+    //also kind of want to display movie information underneath each movie? 
+    max-width: var(--maxWidth);  //control the width of the grid only displaying 5 in a row, maybe play with this if I decide to go full-screen with it
     margin: 0 auto;
     padding: 0 20px;
 

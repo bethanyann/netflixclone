@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 
 export const Wrapper = styled.div`
-    background: var(--darkGrey);
+    background: var(--darkGray);
     padding:  0 20px;
 
 `;
@@ -15,22 +15,26 @@ export const Content = styled.div`
     max-width: var(--maxWidth);
     padding: 20px 0;
     margin: 0 auto; //center the content div itself
+
+    @media screen and (max-width: 720px){
+      padding: 10px 0;   //decrease size of header on smaller screens
+    }
 `;
 
 
 export const LogoImg = styled.img`
     width: 200px;
 
-    //when the screen size is less than 500px
-    @media screen and (max-width: 500px){
-      width: 150px;   
+    //when the screen size is less than 720px
+    @media screen and (max-width: 720px){
+      width: 120px;   
     }
 `;
 
 export const TMDBLogoImg = styled.img`
     width: 250px;
 
-    @media screen and (max-width: 500px) {
+    @media screen and (max-width: 720px) {
         width: 150px;
     }
 `;
