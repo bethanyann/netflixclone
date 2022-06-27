@@ -15,7 +15,7 @@ import NoImage from '../images/no_image.jpg';
 //always capitalize component names
 //curly brackets because we need an explicit return statement here 
 const Home = () => {
-    const { state, loading, error, setSearchTerm } = useHomeFetch();
+    const { state, loading, error, setSearchTerm } = useHomeFetch();  //bringing the set search term here, which means when this gets updated in the search bar, the useHomeFetch() hook will be triggered again
     console.log(state);
     
 

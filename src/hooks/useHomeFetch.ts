@@ -18,6 +18,9 @@ export const useHomeFetch = () => {
 
  const [ searchTerm, setSearchTerm ] = useState('');
 
+ //to test if the setSearchTerm effect is working in the search bar
+ console.log(searchTerm);
+ 
  const fetchMovies = async (page: number, searchTerm: string = "") => {
      try {
          setLoading(true);

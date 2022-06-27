@@ -6,10 +6,18 @@ import searchIcon from '../../images/search-icon.svg';
 
 
 
-const SearchBar = ( setSearchTerm:React.SetStateAction<any> ) => {
-    const [state, setState] = useState('');
+const SearchBar = ( { setSearchTerm }:any) => {
+    const [state, setState] = useState<string>('');
+    const initial = useRef(true);
 
     useEffect(() => {
+        //check if the current value of the ref variable 'initial' is true or not
+        if(initial.current) {
+            //if this is the initial render, set to false and return so the useeffect hook isn't triggered
+            initial.current = false;
+            return;
+        }
+
         //create a timeout in a useEffect to create a delay between when the user types and when the search bar actually fires the api fetch
         const timer =  setTimeout(() => {
             setSearchTerm(state);
