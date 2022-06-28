@@ -1,3 +1,4 @@
+import { findAllByTestId } from '@testing-library/react';
 import { useState, useEffect, useRef } from 'react';
 import API from '../API';
 
@@ -16,16 +17,17 @@ export const useHomeFetch = () => {
  const [loading, setLoading] = useState(false);
  const [error, setError] = useState(false); //use as a flag to detect error from api
 
- const [ searchTerm, setSearchTerm ] = useState('');
+ const [isLoadingMore, setIsLoadingMore] = useState(false);
+ const [ searchTerm, setSearchTerm ] = useState();
 
  //to test if the setSearchTerm effect is working in the search bar
- console.log(searchTerm);
+ //console.log(searchTerm);
 
  const fetchMovies = async (page: number, searchTerm: string = "") => {
      try {
          setLoading(true);
          setError(false);
-
+        console.log(searchTerm);
          const movies = await API.fetchMovies(searchTerm, page);
          //console.log(movies);
          
@@ -48,10 +50,21 @@ export const useHomeFetch = () => {
     useEffect(() => {
         //wipe out the state to remove anything before fetching again
         setState(initialState);
-        fetchMovies(1)
+        fetchMovies(1, searchTerm); //almost forgot to pass in the search term here and couldn't figure out why the search wasn't working. 
     }, [searchTerm]); //this will trigger once on first render, and then it will also trigger when the search term changes
 
-    return { state, loading, error, setSearchTerm, searchTerm };
+
+    //Load More - we only want this to run if it is loading more, and not just on any render
+    useEffect(() => {
+        if(!isLoadingMore) return;
+        //increment page by one
+        fetchMovies(state.page + 1, searchTerm);
+        //set the load to false once the fetch has completed
+        setIsLoadingMore(false);
+
+    }, [isLoadingMore, searchTerm, state.page]);
+
+    return { state, loading, error, setSearchTerm, searchTerm, setIsLoadingMore };
 };
 
 

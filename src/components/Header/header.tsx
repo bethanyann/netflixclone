@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 //images
 import Logo from '../../images/react-movie-logo.svg';
 import TMDBLogo from '../../images/tmdb_logo2.svg';
@@ -9,8 +10,12 @@ import { Wrapper, Content, LogoImg, TMDBLogoImg } from './Header.styles';
 const Header = () => (
     <Wrapper>
         <Content>
-            <LogoImg src={Logo} alt='logo' />
-            <TMDBLogoImg src={TMDBLogo} alt='the movie database attribution logo' />
+            <Link to='/' >
+                <LogoImg src={Logo} alt='logo' />
+            </Link>
+            <a href='https://www.themoviedb.org/'>
+                <TMDBLogoImg src={TMDBLogo} alt='the movie database attribution logo' />
+            </a>
         </Content>
     </Wrapper>
 );
