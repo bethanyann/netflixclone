@@ -39,6 +39,7 @@ const SearchBar = ( { setSearchTerm }:any) => {
                     onChange={(event) => { setState(event.currentTarget.value)}} //inline function to send in the argument of the current value
                     value={state}
                 />
+                <h1 onClick={()=> setState('')}>x</h1>
             </Content>
         </Wrapper>
     )

@@ -3,13 +3,12 @@ import { SEARCH_BASE_URL, POPULAR_BASE_URL, API_URL, API_KEY, REQUEST_TOKEN_URL,
 const apiSettings = {
 //create an object with all of the fetch requests for easier access later 
     fetchMovies: async (searchTerm: string, page: number | null) => {
-        debugger;
         const endpoint = searchTerm ? `${SEARCH_BASE_URL}${searchTerm}&page=${page}` : `${POPULAR_BASE_URL}&page=${page}`;
         const data = await fetch(endpoint);
         const json = await data.json();
         return await json;
     },
-    fetchMovieData: async (movieId:number) => {
+    fetchMovieData: async (movieId: number) => {
         const endpoint = `${API_URL}movie/${movieId}?api_key=${API_KEY}`;
         const data = await fetch(endpoint);
         const json = await data.json();

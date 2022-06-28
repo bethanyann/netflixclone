@@ -67,4 +67,21 @@ export const Content = styled.div`
         }
     
     }
+
+    h1{
+        position: absolute;
+        right: 0px;
+        width: 44px;
+        margin: 0;
+        top: 0px;
+        background: #303030;
+        font-size: 20px;
+        padding: 14px 0px 15px 0px;
+        align-items: center;
+        text-align: center;
+        border-top-right-radius: 30px;
+        border-bottom-right-radius: 30px;
+        font-weight: bolder;
+        cursor: pointer;
+    }
 `;
