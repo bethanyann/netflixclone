@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 //API
 import API from '../API';
+//types
+import {Movie} from '../types/Types';
 
 export const useMovieFetch = (movieId: number) => {
-    const [ state, setState ] = useState({});
+    const [ state, setState ] = useState<Movie>();
     const [ loading, setLoading ] = useState(true);
     const [ error, setError ] = useState(false);
 
