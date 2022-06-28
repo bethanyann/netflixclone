@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 //styles
 import { Image } from './Thumb.styles';
 
@@ -12,7 +13,13 @@ interface Props {
 //destructuring out the props being passed in so you don't have to do props.image, props.movieId etc
 const Thumbnail: React.FC<Props> = ({ image, movieId, clickable}) => (
  <div>
-     <Image src={image} alt='movie-thumbnail' /> 
+    {clickable ? (
+        <Link to={`/${movieId}`}>
+             <Image src={image} alt='movie-thumbnail' /> 
+        </Link>
+    ) : (
+        <Image src={image} alt='movie-thumbnail' /> 
+    )}
  </div>
 );
 
