@@ -8,6 +8,18 @@ const apiSettings = {
         const data = await fetch(endpoint);
         const json = await data.json();
         return await json;
+    },
+    fetchMovieData: async (movieId:number) => {
+        const endpoint = `${API_URL}movie/${movieId}?api_key=${API_KEY}`;
+        const data = await fetch(endpoint);
+        const json = await data.json();
+        return await json;
+    },
+    fetchMovieCredits: async (movieId: number) => {
+        const endpoint = `${API_URL}movie/${movieId}/credits?api_key=${API_KEY}`;
+        const data = await fetch(endpoint);
+        const json = await data.json();
+        return await json;
     }
 
 }
