@@ -6,8 +6,9 @@ import { Image } from './Thumb.styles';
 //interface for the props being passed in
 interface Props {
     image: string,
-    movieId: string,
-    clickable: boolean
+    movieId?: string | undefined,
+    clickable: boolean,
+    alt: string
 }
 
 //destructuring out the props being passed in so you don't have to do props.image, props.movieId etc

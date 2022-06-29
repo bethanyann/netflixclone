@@ -1,10 +1,11 @@
 
 //Converts time to hours & minutes
-export const calcTime = (time: any) => {
+export const calcTime = (time: number) => {
     const hours = Math.floor(time / 60);
     const minutes = time % 60;
+    const hour = hours > 1 ? "hours" : "hour";
 
-    return `${hours} hours and ${minutes} minutes`;
+    return `${hours} ${hour} and ${minutes} minutes`;
 }
 
 //Converts a number to readable USD currency format

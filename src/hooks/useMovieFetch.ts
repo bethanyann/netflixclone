@@ -5,7 +5,7 @@ import API from '../API';
 import {Movie} from '../types/Types';
 
 export const useMovieFetch = (movieId: number) => {
-    const [ state, setState ] = useState<Movie>();
+    const [ movie, setMovie] = useState<Movie>();
     const [ loading, setLoading ] = useState(true);
     const [ error, setError ] = useState(false);
 
@@ -27,7 +27,7 @@ export const useMovieFetch = (movieId: number) => {
                 //filter out directors only from the crew list in the credits array
                 const directors = credits.crew.filter((member: { job: string; }) => member.job === 'Director');
 
-                setState({
+                setMovie({
                     ...movie,
                     actors: credits.cast,
                     directors: directors
@@ -44,5 +44,5 @@ export const useMovieFetch = (movieId: number) => {
 
     }, [movieId]);
 
-    return {state, loading, error};
+    return {movie, loading, error};
 }

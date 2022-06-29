@@ -19,13 +19,13 @@ export type Movie = {
     budget: number;
     runtime: number;
     revenue: number;
+    actors: Actor[];
   }
 
   export type Credits = {
     id: number;
     cast: Cast[],
     crew: Crew[],
-  
   }
   
   export type Cast = {
@@ -39,4 +39,15 @@ export type Movie = {
     job: string;
     name: string;
     credit_id: number;
+  }
+
+  export type Actor = {
+    id: number;
+    name: string;
+    popularity: number;
+    profile_path: string;
+    character: string;
+    cast_id: number;
+    credit_id: string;
+    order: number;
   }

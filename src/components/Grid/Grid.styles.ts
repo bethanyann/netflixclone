@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
     //also kind of want to display movie information underneath each movie? 
     max-width: var(--maxWidth);  //control the width of the grid only displaying 5 in a row, maybe play with this if I decide to go full-screen with it
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 20px 20px 20px;
 
     h1{
         color: var(--medGrey);

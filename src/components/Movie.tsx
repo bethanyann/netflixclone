@@ -8,16 +8,20 @@ import { Movie as MovieType } from '../types/Types';
 import Grid from './Grid/grid';
 import Spinner from './Spinner/spinner';
 import BreadCrumb from './BreadCrumb/breadcrumb';
+import MovieInfo from './MovieInfo/movieInfo';
+import MovieInfoBar from './MovieInfoBar/movieInfoBar';
+import Actor from './Actor/actor';
 //hooks
 import { useMovieFetch } from '../hooks/useMovieFetch';
 //image
 import NoImage from '../images/no_image.jpg';
 
+
 const Movie = () => {
     const  { movieId }  = useParams(); //this name has to match the name given in the app.tsx file in the route path
     const movieID = Number(movieId); //probably a better way to do this 
 
-    const {state: movie, loading, error} = useMovieFetch(movieID);
+    const {movie, loading, error} = useMovieFetch(movieID);
 
     //use to see structure of movie array options
     //console.log(movie); 
@@ -28,6 +32,17 @@ const Movie = () => {
     return (
         <>
             {movie ? <BreadCrumb movieTitle={movie.original_title} /> : <Link to='/'>Back to Homepage</Link> }
+            <MovieInfo movie={movie} />
+            <MovieInfoBar movie={movie} />
+            <Grid header='Actors'>
+                {movie ? movie.actors.map(actor => (
+                   <Actor key={actor.credit_id} name={actor.name} character={actor.character}
+                    imageURL= {
+                        actor.profile_path ? `${IMAGE_BASE_URL}${POSTER_SIZE}${actor.profile_path}` : NoImage
+                    }
+                   />  
+                )) : null}
+            </Grid>
         </>
     );
 }
