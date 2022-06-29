@@ -2,7 +2,7 @@ import React from 'react';
 //styles
 import { Wrapper, Content, Text } from './MovieInfo.styles';
 //component
-import Thumbnail from '../Thumbnail/thumbnail';
+import Thumbnail from '../MovieThumbnail/thumbnail';
 //config
 import { IMAGE_BASE_URL, POSTER_SIZE } from '../../config';
 //image

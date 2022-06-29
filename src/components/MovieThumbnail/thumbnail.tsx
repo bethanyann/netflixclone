@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Image } from './Thumb.styles';
 
 //interface for the props being passed in
-interface Props {
+interface IThumbnail {
     image: string,
     movieId?: string | undefined,
     clickable: boolean,
@@ -12,7 +12,7 @@ interface Props {
 }
 
 //destructuring out the props being passed in so you don't have to do props.image, props.movieId etc
-const Thumbnail: React.FC<Props> = ({ image, movieId, clickable}) => (
+const Thumbnail = ({ image, movieId, clickable} : IThumbnail) => (
  <div>
     {clickable ? (
         <Link to={`/${movieId}`}>

@@ -23,4 +23,12 @@ export const Image = styled.img`
     height: 200px;
     object-fit: cover;
     border-radius: 15px; 
+    cursor: pointer;
+
+    :hover {
+       // opacity: 80%;
+        filter: brightness(110%) grayscale(20%);
+        cursor: pointer;
+    }
 `; 
+

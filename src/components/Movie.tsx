@@ -3,14 +3,13 @@ import { useParams, Link } from 'react-router-dom'; //this is how you get the mo
 //config
 import { IMAGE_BASE_URL, POSTER_SIZE } from '../config';
 //types
-import { Movie as MovieType } from '../types/Types';
 //components
 import Grid from './Grid/grid';
 import Spinner from './Spinner/spinner';
 import BreadCrumb from './BreadCrumb/breadcrumb';
 import MovieInfo from './MovieInfo/movieInfo';
 import MovieInfoBar from './MovieInfoBar/movieInfoBar';
-import Actor from './Actor/actor';
+import Actor from './ActorThumbnail/actor';
 //hooks
 import { useMovieFetch } from '../hooks/useMovieFetch';
 //image
@@ -27,16 +26,21 @@ const Movie = () => {
     //console.log(movie); 
 
     if(loading) return <div> <Spinner /> </div>;
-    if(error) return <div> Something went wrong..</div>; //TODO - make an error handler and page to display
+    if(error) return <div> Something went wrong...</div>; //TODO - make an error handler and page to display
     
     return (
         <>
             {movie ? <BreadCrumb movieTitle={movie.original_title} /> : <Link to='/'>Back to Homepage</Link> }
-            <MovieInfo movie={movie} />
-            <MovieInfoBar movie={movie} />
+            {movie ?
+             <>
+                <MovieInfo movie={movie} />
+                <MovieInfoBar movie={movie} />
+             </>
+             : null
+            }
             <Grid header='Actors'>
                 {movie ? movie.actors.map(actor => (
-                   <Actor key={actor.credit_id} name={actor.name} character={actor.character}
+                   <Actor key={actor.credit_id} actorId={actor.id} name={actor.name} character={actor.character ? actor.character: ""}
                     imageURL= {
                         actor.profile_path ? `${IMAGE_BASE_URL}${POSTER_SIZE}${actor.profile_path}` : NoImage
                     }

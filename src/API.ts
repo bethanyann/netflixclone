@@ -1,4 +1,4 @@
-import { SEARCH_BASE_URL, POPULAR_BASE_URL, API_URL, API_KEY, REQUEST_TOKEN_URL, LOGIN_URL, SESSION_ID_URL } from "./config";
+import { SEARCH_BASE_URL, POPULAR_BASE_URL, API_URL, API_KEY, LANGUAGE, ACTOR_INFO_URL, REQUEST_TOKEN_URL, LOGIN_URL, SESSION_ID_URL } from "./config";
 
 const apiSettings = {
 //create an object with all of the fetch requests for easier access later 
@@ -16,6 +16,19 @@ const apiSettings = {
     },
     fetchMovieCredits: async (movieId: number) => {
         const endpoint = `${API_URL}movie/${movieId}/credits?api_key=${API_KEY}`;
+        const data = await fetch(endpoint);
+        const json = await data.json();
+        return await json;
+    },
+    fetchActorInfo: async (actorId: number) => {
+        // `${API_URL}person/` // url will look like this: {personID}?api_key=${API_KEY}${LANGUAGE}
+        const endpoint = `${ACTOR_INFO_URL}${actorId}?api_key=${API_KEY}${LANGUAGE}`;
+        const data = await fetch(endpoint);
+        const json = await data.json();
+        return await json;
+    },
+    fetchActorInfoMovieCredits: async (actorId: number) => {
+        const endpoint = `${ACTOR_INFO_URL}${actorId}/movie_credits?api_key=${API_KEY}${LANGUAGE}`;
         const data = await fetch(endpoint);
         const json = await data.json();
         return await json;

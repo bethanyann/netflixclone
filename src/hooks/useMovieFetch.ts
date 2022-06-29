@@ -6,7 +6,7 @@ import {Movie} from '../types/Types';
 
 export const useMovieFetch = (movieId: number) => {
     const [ movie, setMovie] = useState<Movie>();
-    const [ loading, setLoading ] = useState(true);
+    const [ loading, setLoading ] = useState(true); //this throws an error if this isn't set to true 
     const [ error, setError ] = useState(false);
 
     useEffect(() => {

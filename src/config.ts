@@ -3,9 +3,11 @@
 
 const API_URL:string = 'https://api.themoviedb.org/3/';
 const API_KEY:string | undefined = process.env.REACT_APP_API_KEY;
+const LANGUAGE:string = '&language=en-US'
 
-const SEARCH_BASE_URL:string = `${API_URL}search/movie?api_key=${API_KEY}&language=en-US&query=`;
-const POPULAR_BASE_URL:string = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US`;
+const SEARCH_BASE_URL: string = `${API_URL}search/movie?api_key=${API_KEY}${LANGUAGE}&query=`;
+const POPULAR_BASE_URL: string = `${API_URL}movie/popular?api_key=${API_KEY}${LANGUAGE}`;
+const ACTOR_INFO_URL: string = `${API_URL}person/` // url will look like this: {personID}?api_key=${API_KEY}${LANGUAGE}
 
 //for login as guest session & favoriting movies
 const REQUEST_TOKEN_URL: string = `${API_URL}authentication/token/new?api_key=${API_KEY}`; //https://developers.themoviedb.org/3/authentication/create-request-token
@@ -18,4 +20,17 @@ const BACKDROP_SIZE: string = 'w1280';
 //available poster sizes: w92, w154, w342, w500, w780, original
 const POSTER_SIZE: string = 'w780';
 
-export { API_URL, API_KEY, SEARCH_BASE_URL, POPULAR_BASE_URL, REQUEST_TOKEN_URL, LOGIN_URL, SESSION_ID_URL, IMAGE_BASE_URL, BACKDROP_SIZE, POSTER_SIZE  };
+export { 
+    API_URL, 
+    API_KEY, 
+    SEARCH_BASE_URL, 
+    POPULAR_BASE_URL,
+    REQUEST_TOKEN_URL, 
+    LOGIN_URL, 
+    SESSION_ID_URL, 
+    IMAGE_BASE_URL,
+    BACKDROP_SIZE,
+    POSTER_SIZE,
+    ACTOR_INFO_URL, 
+    LANGUAGE 
+ };

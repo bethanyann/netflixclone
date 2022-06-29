@@ -46,8 +46,14 @@ export type Movie = {
     name: string;
     popularity: number;
     profile_path: string;
-    character: string;
-    cast_id: number;
-    credit_id: string;
-    order: number;
+    character?: string;
+    cast_id?: number;
+    credit_id?: string;
+    order?: number;
+    biography?: string;
+    birthday?: string;
+    known_for_department? : string;
+    birthplace?: string;
+    imdb_id?: string;
+    credits: Movie[]; //I think this is the return type but double check 
   }
