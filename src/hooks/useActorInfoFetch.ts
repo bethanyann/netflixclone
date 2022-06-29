@@ -1,3 +1,4 @@
+import { release } from 'os';
 import { useState, useEffect } from 'react';
 //API
 import API from '../API';
@@ -19,25 +20,24 @@ export const useActorInfoFetch = (actorId:number) => {
             try {
                 setLoading(true);
                 setError(false);
-                debugger;
 
                 const actor = await API.fetchActorInfo(actorId);
                 const actorCredits = await API.fetchActorInfoMovieCredits(actorId);
 
-                //filter out anything from the results that I dont want (tv shows? just movies?)
-                //filter out things without a release date
-
-                //filter out things where the role isn't listed
-
-                //order by release date
+                //filter out things without a release date & the role isnt listed 
+                const releasedCredits = actorCredits.cast.filter((movie: { release_date: string; character: string; }) => movie.release_date !== "" && movie.character !== "")
+                //order by release date so most recent is first 
+                const sortedCredits = releasedCredits.sort((a: { release_date: string; },b: { release_date: string; }) => Date.parse(b.release_date) - Date.parse(a.release_date));
+                
                 console.log(actor);
-                console.log(actorCredits);
+                console.log(sortedCredits);
                 
                 setActorInfo({
                     ...actor,
-                    credits: actorCredits.cast,
+                    credits: sortedCredits,
                 });
 
+                setLoading(false);
 
             } catch(error) {
                 setError(true);
