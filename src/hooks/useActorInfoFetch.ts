@@ -29,7 +29,7 @@ export const useActorInfoFetch = (actorId:number) => {
                 //order by release date so most recent is first 
                 const sortedCredits = releasedCredits.sort((a: { release_date: string; },b: { release_date: string; }) => Date.parse(b.release_date) - Date.parse(a.release_date));
                 
-                console.log(actor);
+                console.log(actor.biography);
                 console.log(sortedCredits);
                 
                 setActorInfo({

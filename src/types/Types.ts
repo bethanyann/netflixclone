@@ -53,7 +53,7 @@ export type Movie = {
     biography?: string;
     birthday?: string;
     known_for_department? : string;
-    birthplace?: string;
+    place_of_birth?: string;
     imdb_id?: string;
     credits: Movie[]; //I think this is the return type but double check 
   }

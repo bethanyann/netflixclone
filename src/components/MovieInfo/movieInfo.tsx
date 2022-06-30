@@ -16,6 +16,7 @@ const MovieInfo = ({movie}:any) => (
         <Content>
             <Thumbnail image={movie.poster_path ? `${IMAGE_BASE_URL}${POSTER_SIZE}${movie.poster_path}` : NoImage }
             clickable={false}
+            actor={false}
             alt='movie-thumb' />
             <Text> 
                 <h1>{movie.title}</h1>

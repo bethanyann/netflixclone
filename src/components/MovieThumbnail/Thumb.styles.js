@@ -22,4 +22,9 @@ export const Image = styled.img`
         }
 
     }
+
+    .actorThumbStyles {
+        height: 600px;
+        width: 450px;
+    }
 `;
