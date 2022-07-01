@@ -38,6 +38,7 @@ export const Content = styled.div`
 `;
 
 export const Text = styled.div`
+   
     width: 100%;
     padding: 20px 40px;
     color: var(--white);
@@ -54,6 +55,11 @@ export const Text = styled.div`
         align-content: center;
         margin-top: 200px;
         margin-bottom: auto;
+
+        @media screen and (max-width: 1100px){
+            margin-top: 60px;
+            font-size: var(--fontMed);
+        }
     }
 
     .score {
@@ -76,19 +82,32 @@ export const Text = styled.div`
         p {
             margin: 0;
             font-size: var(--fontMed);
+
+            @media screen and (max-width: 1100px)
+            {
+                font-size: medium;
+            }
         }
     }
 
     h1 {
         margin-bottom: 0;
-        @media screen and (max-width: 768px) {
+        @media screen and (max-width: 1100px) {
             font-size: var(--fontBig);
+        }
+        @media screen and (max-width: 768px) {
+            font-size: larger;
         }
     }
 
     h2{
         font-style: italic;
         margin-top: 0;
+
+        @media screen and (max-width: 1100px) {
+            font-size: larger;
+            margin-top:10px;
+        }
         
     }
 

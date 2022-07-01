@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
     background: var(--darkGray);
     padding: 0 20px;
 
-    @media screen and (max-width: 720px)
+    @media screen and (max-width: 768px)
     {
         height: 70px;
     }
@@ -23,7 +23,7 @@ export const Content = styled.div`
     border-radius: 40px;
     color: var(--white);
 
-    @media screen and (max-width: 720px)
+    @media screen and (max-width: 768px)
     {
         height: 40px;
     }
@@ -35,7 +35,7 @@ export const Content = styled.div`
         top: 14px;
         width:30px;
 
-        @media screen and (max-width: 720px)
+        @media screen and (max-width: 768px)
         {
            width: 25px;
            top: 8px;
@@ -60,7 +60,7 @@ export const Content = styled.div`
         }
 
        
-        @media screen and (max-width: 720px)
+        @media screen and (max-width: 768px)
         {
             margin: 0 0;
             font-size: var(--fontMed);
@@ -79,9 +79,15 @@ export const Content = styled.div`
         padding: 14px 0px 15px 0px;
         align-items: center;
         text-align: center;
-        border-top-right-radius: 30px;
-        border-bottom-right-radius: 30px;
+        border-top-right-radius: 40px;
+        border-bottom-right-radius: 40px;
         font-weight: bolder;
         cursor: pointer;
+
+        @media screen and (max-width: 768px)
+        {
+            font-size: 18px;
+            padding: 7px 0px 10px 0px;
+        }
     }
 `;

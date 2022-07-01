@@ -29,7 +29,7 @@ const Movie = () => {
     
     return (
         <>
-            {movie ? <BreadCrumb movieTitle={movie.original_title} /> : <Link to='/'>Back to Homepage</Link> }
+            {/* {movie ? <BreadCrumb movieTitle={movie.original_title} /> : <Link to='/'>Back to Homepage</Link> } */}
             {movie ?
              <>
                 <MovieInfo movie={movie} />

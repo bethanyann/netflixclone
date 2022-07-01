@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 //styles
-import { SmallThumbnail, LargeThumbnail } from './Thumb.styles';
+import { SmallThumbnail, LargeThumbnail, Wrapper } from './Thumb.styles';
 
 //interface for the props being passed in
 interface IThumbnail {
@@ -13,10 +13,10 @@ interface IThumbnail {
 }
 
 //destructuring out the props being passed in so you don't have to do props.image, props.movieId etc
-const Thumbnail = ({ image, movieId, clickable, hoverEffect} : IThumbnail) => {
+const Thumbnail = ({ image, movieId, clickable} : IThumbnail) => {
 
     return (
-        <div>
+        <Wrapper>
             {clickable ? (
                 <Link to={`/${movieId}`}>
                     <SmallThumbnail src={image} alt='movie-thumbnail'/> 
@@ -24,7 +24,7 @@ const Thumbnail = ({ image, movieId, clickable, hoverEffect} : IThumbnail) => {
             ) : (
                 <LargeThumbnail src={image} alt='movie-thumbnail' /> 
             )}
-        </div>
+        </Wrapper>
     );
 };
 
