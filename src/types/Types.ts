@@ -58,6 +58,7 @@ export type Movie = {
     order?: number;
     biography?: string;
     birthday?: string;
+    deathday?: string;
     known_for_department? : string;
     place_of_birth?: string;
     imdb_id?: string;
