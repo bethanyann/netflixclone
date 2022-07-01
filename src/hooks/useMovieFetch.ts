@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { setConstantValue } from 'typescript';
 //API
 import API from '../API';
 //helpers
@@ -52,7 +51,8 @@ export const useMovieFetch = (movieId: number) => {
             return;
         }
 
-        fetchMovie(); //dont forget to actually call the function... 
+        //call fetch here
+        fetchMovie(); 
 
     }, [movieId]);
 

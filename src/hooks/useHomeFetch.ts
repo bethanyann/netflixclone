@@ -1,6 +1,7 @@
-import { findAllByTestId } from '@testing-library/react';
 import { useState, useEffect, useRef } from 'react';
 import API from '../API';
+//helpers
+import { isPersistedState } from '../helpers';
 
 //initial state of the movie list to be used to reset stuff
 //the names of these properties match the property values that come back from the api in the movie list 
@@ -49,6 +50,17 @@ export const useHomeFetch = () => {
     //put the useeffect hook here to call the fetchMovies function when we startup the application and the Home component mounts
     //going to use this same hook for searching for movies too 
     useEffect(() => {
+        //session storage check
+        if(!searchTerm){
+            const sessionState = isPersistedState('homeState');
+
+            if(sessionState){
+                console.log('grabbing from session storage');
+                setState(sessionState);
+                return;
+            }
+        }
+        console.log('grabbing from api');
         //wipe out the state to remove anything before fetching again
         setState(initialState);
         fetchMovies(1, searchTerm); //almost forgot to pass in the search term here and couldn't figure out why the search wasn't working. 
@@ -65,6 +77,13 @@ export const useHomeFetch = () => {
 
     }, [isLoadingMore, searchTerm, state.page]);
 
+
+    //write to session storage when the search term changes and the state changes
+    useEffect(() => {
+        if(!searchTerm) {
+            sessionStorage.setItem('homeState', JSON.stringify(state)); //can only write a string to the session storage
+        }
+    }, [searchTerm, state])
     return { state, loading, error, setSearchTerm, searchTerm, setIsLoadingMore };
 };
 

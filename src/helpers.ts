@@ -17,3 +17,10 @@ export const convertMoney = (money: number) => {
 
     return formatter.format(money);
 }
+
+//use for session storage
+export const isPersistedState = (stateName: any) => {
+    //gets item from session storage with the name that is passed in
+    const sessionState = sessionStorage.getItem(stateName);
+    return sessionState && JSON.parse(sessionState);
+}
