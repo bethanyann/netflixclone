@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 //config
 import { POSTER_SIZE, BACKDROP_SIZE, IMAGE_BASE_URL } from '../config';
 //components
@@ -10,8 +10,7 @@ import SearchBar from './SearchBar/searchbar';
 import Button from './Button/button';
 //hooks
 import { useHomeFetch } from '../hooks/useHomeFetch';
-//image
-import NoImage from '../images/no_image.jpg';
+
 
 //always capitalize component names
 //curly brackets because we need an explicit return statement here 
@@ -40,7 +39,7 @@ const Home = () => {
         
         {loading ? <Spinner/> : null }
 
-        {state.page < state.total_pages && !loading ? (         //only show the load more button if its not the last page and if its not loading more movies
+        {state.page < state.total_pages && !loading ? ( //only show the load more button if its not the last page and if its not loading more movies
             <Button text='Load More' callback={() => setIsLoadingMore(true)}/>
         ) : null }
     </>

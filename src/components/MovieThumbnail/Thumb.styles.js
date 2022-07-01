@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const SmallThumbnail = styled.img`    
     width: 100%;
+    height: 100%;
     max-width: 720px;
     transition: all 0.3s; //transition on hover
     object-fit: cover; //center the image and make it fit into the thumbnails
@@ -30,19 +31,13 @@ export const LargeThumbnail = styled.img`
     transition: all 0.3s; //transition on hover
     object-fit: cover; //center the image and make it fit into the thumbnails
     border-radius: 20px; //rounded corners 
-
-    @media screen and (max-width: 1300px){
-        height:100%;
-    }
+    height: 100%; //image fills the parent div
 
     @media screen and (max-width: 768px){
-       //height: 300px;
        max-width: 300px;
        margin: 0 auto;
        margin-top: 20px;
     }
-
-    
 `;
 
 export const Wrapper = styled.div`

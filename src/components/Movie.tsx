@@ -1,18 +1,17 @@
 import React from 'react';
-import { useParams, Link } from 'react-router-dom'; //this is how you get the movieId prop from the router 
+import { useParams } from 'react-router-dom'; //this is how you get the movieId prop from the router 
 //config
 import { IMAGE_BASE_URL, POSTER_SIZE } from '../config';
 //types
 //components
 import Grid from './Grid/grid';
 import Spinner from './Spinner/spinner';
-import BreadCrumb from './BreadCrumb/breadcrumb';
 import MovieInfo from './MovieInfo/movieInfo';
 import Actor from './ActorThumbnail/actor';
 //hooks
 import { useMovieFetch } from '../hooks/useMovieFetch';
 //image
-import NoImage from '../images/no_image.jpg';
+import NoImage from '../images/no-image-found.png';
 
 
 const Movie = () => {

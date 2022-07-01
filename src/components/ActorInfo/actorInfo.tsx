@@ -10,7 +10,7 @@ import { IMAGE_BASE_URL, POSTER_SIZE } from '../../config';
 //components
 import { Spinner } from '../Spinner/Spinner.styles';
 import Thumbnail from '../MovieThumbnail/thumbnail';
-import NoImage from '../../images/no_image.jpg'
+import NoImage from '../../images/no-image-found.png';
 import NotFound from '../NotFound';
 import IMDBLogo from '../../images/imdb.png';
 import Grid from '../Grid/grid';

@@ -1,4 +1,3 @@
-import { release } from 'os';
 import { useState, useEffect } from 'react';
 //API
 import API from '../API';
@@ -27,7 +26,7 @@ export const useActorInfoFetch = (actorId:number) => {
                //console.log(actorExternalIds);
 
                 //filter out things without a release date & the role isnt listed 
-                const releasedCredits = actorCredits.cast.filter((movie: { release_date: string; character: string; }) => movie.release_date !== "" && movie.character !== "")
+                const releasedCredits = actorCredits.cast.filter((movie: { release_date: string; character: string; poster_path: string; }) => movie.release_date !== "" && movie.character !== "" && movie.poster_path !== null );
                 //order by release date so most recent is first 
                 const sortedCredits = releasedCredits.sort((a: { release_date: string; },b: { release_date: string; }) => Date.parse(b.release_date) - Date.parse(a.release_date));
                 

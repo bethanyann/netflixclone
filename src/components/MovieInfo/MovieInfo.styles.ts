@@ -68,11 +68,12 @@ export const Text = styled.div`
         justify-content: center;
         width: 38px;
         height: 38px;
-        background: var(--white);
-        color: #000;
+        background: var(--lightBlue);
+        color: var(--darkGray);
         font-weight: 800;
         border-radius: 50%;
         margin: 0;
+        margin-left: 5px;
     }
 
     .director {
@@ -88,10 +89,18 @@ export const Text = styled.div`
                 font-size: medium;
             }
         }
+
+        .genres:not(:last-child):after {
+                color: var(--lightGreen);
+                content: " + ";
+        }
+
     }
 
     h1 {
         margin-bottom: 0;
+        position: relative;
+
         @media screen and (max-width: 1100px) {
             font-size: var(--fontBig);
         }
@@ -113,6 +122,16 @@ export const Text = styled.div`
 
     h3{
         margin-top: 50px;
+    }
+
+    span {
+        position: absolute;
+        top: 7px;
+        //left: 153px;
+        //padding-left: 15px;
+        margin-left: 20px;
+        font-size: 1.3rem;
+        align-items: center;
     }
 
   
