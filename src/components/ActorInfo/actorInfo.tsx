@@ -48,26 +48,35 @@ const ActorInfo = () => {
                                      
                     <div className="actor-info">
                         <div className="director">
-                            <h3>Place of Birth</h3>
-                            <div>{actorInfo.place_of_birth}</div>
+                            <h3>PLACE OF BIRTH</h3>
+                            { actorInfo.place_of_birth ? 
+                                <div>{actorInfo.place_of_birth}</div>
+                                : <div>No data found</div>
+                            }
                         </div>
                         <div className="director">
-                            <h3>BIRTHDAY</h3>
-                            <div><Moment format='MMMM DD, YYYY'>{actorInfo.birthday}</Moment></div>
+                            <h3>BORN</h3>
+                            { actorInfo.birthday ? 
+                                <div><Moment format='MMMM DD, YYYY'>{actorInfo.birthday}</Moment></div>
+                                : <div>No data found</div>
+                            }
                         </div>
-                        {actorInfo.deathday ? 
-                            <div className="director">
-                                <h3>DIED</h3>
-                                <div><Moment format='MMMM DD, YYYY'>{actorInfo.deathday}</Moment> (<Moment duration={actorInfo.birthday} date={actorInfo.deathday} format='Y'/> years old)</div>
-                            </div>
-                    
-                        :
-                            <div className="director">
-                                <h3>AGE</h3>
-                                <div><Moment fromNow ago>{actorInfo.birthday}</Moment> old</div>
-                            </div>
-                        }
+                       
                         
+                        { actorInfo.deathday ? 
+                                <div className="director">
+                                    <h3>DIED</h3>
+                                    <div><Moment format='MMMM DD, YYYY'>{actorInfo.deathday}</Moment> (<Moment duration={actorInfo.birthday} date={actorInfo.deathday} format='Y'/> years old)</div>
+                                </div>
+                                :
+                                <div className="director">
+                                    <h3>AGE</h3>
+                                    {actorInfo.birthday ? 
+                                     <div><Moment fromNow ago>{actorInfo.birthday}</Moment> old</div>
+                                     : <div>No data found</div>   
+                                    }
+                                </div>
+                        }
                         <div className="imdb-image">
                             <a target="_blank" rel="noreferrer nofollow" href={`https://www.imdb.com/name/${actorInfo.imdb_id}`}><img src={IMDBLogo} alt='imdb-logo' /></a>
                         </div>
