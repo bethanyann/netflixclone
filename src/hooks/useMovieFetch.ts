@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
+import { setConstantValue } from 'typescript';
 //API
 import API from '../API';
+//helpers
+import { isPersistedState } from '../helpers';
 //types
 import {Movie} from '../types/Types';
 
@@ -26,7 +29,7 @@ export const useMovieFetch = (movieId: number) => {
 
                 //filter out directors only from the crew list in the credits array
                 const directors = credits.crew.filter((member: { job: string; }) => member.job === 'Director');
-
+       
                 setMovie({
                     ...movie,
                     actors: credits.cast,
@@ -40,9 +43,23 @@ export const useMovieFetch = (movieId: number) => {
             }
         }
 
+        //check session storage before calling function to grab movie
+        const sessionState = isPersistedState(movieId);
+        if(sessionState){
+            console.log('grabbing from session storage');
+            setMovie(sessionState);
+            setLoading(false);
+            return;
+        }
+
         fetchMovie(); //dont forget to actually call the function... 
 
     }, [movieId]);
+
+    //write to session storage after fetching movie
+    useEffect(() => {
+        sessionStorage.setItem(movieId.toString(), JSON.stringify(movie));
+    }, [movieId, movie]);
 
     return {movie, loading, error};
 }
