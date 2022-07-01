@@ -42,7 +42,7 @@ export const Text = styled.div`
     .actor-info {
         display: flex;
         justify-content: flex-start;
-        margin-top: 20px;
+        margin-top: 30px;
     }
 
     .score {
@@ -57,8 +57,9 @@ export const Text = styled.div`
     }
 
     .director {
-        margin: 0 0 0 40px;
-
+        :nth-child(2),:nth-child(3){
+            margin: 0 0 0 40px;
+        }
         p {
             margin: 0;
         }
@@ -78,9 +79,17 @@ export const Text = styled.div`
     }
 
     img {
-        width: 55px;
-        height: 30px;
-        display: flex;
+        width: 65px;
+        height: 40px;
+      //  display: flex;
+        margin-top: 32px;
+        justify-content: end;
+    }
+
+    .imdb-image{
+       // margin: 0 0 0 40px;
+        margin-left: auto;
+        margin-right: 10px;
     }
 `;
 

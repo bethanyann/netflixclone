@@ -23,14 +23,16 @@ export const useActorInfoFetch = (actorId:number) => {
 
                 const actor = await API.fetchActorInfo(actorId);
                 const actorCredits = await API.fetchActorInfoMovieCredits(actorId);
+               //const actorExternalIds = await API.fetchActorExternalSources(actorId);
+               //console.log(actorExternalIds);
 
                 //filter out things without a release date & the role isnt listed 
                 const releasedCredits = actorCredits.cast.filter((movie: { release_date: string; character: string; }) => movie.release_date !== "" && movie.character !== "")
                 //order by release date so most recent is first 
                 const sortedCredits = releasedCredits.sort((a: { release_date: string; },b: { release_date: string; }) => Date.parse(b.release_date) - Date.parse(a.release_date));
                 
-                console.log(actor.biography);
-                console.log(sortedCredits);
+                // console.log(actor.biography);
+                // console.log(sortedCredits);
                 
                 setActorInfo({
                     ...actor,

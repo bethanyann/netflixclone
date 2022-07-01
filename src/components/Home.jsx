@@ -4,7 +4,7 @@ import { POSTER_SIZE, BACKDROP_SIZE, IMAGE_BASE_URL } from '../config';
 //components
 import HeroImage from './HeroImage/heroimage';
 import Grid from './Grid/grid';
-import Thumb from './MovieThumbnail/thumbnail';
+import Thumbnail from './MovieThumbnail/thumbnail';
 import Spinner from './Spinner/spinner';
 import SearchBar from './SearchBar/searchbar';
 import Button from './Button/button';
@@ -34,7 +34,7 @@ const Home = () => {
         <SearchBar setSearchTerm={setSearchTerm} />
         <Grid header={ searchTerm ? 'Search Results' : 'Popular Movies'}>
             {state.results.map(movie => (
-                <Thumb key={movie.id} clickable={true} movieId={movie.id} image={movie.poster_path ? IMAGE_BASE_URL+POSTER_SIZE+movie.poster_path : NoImage }/>
+                <Thumbnail key={movie.id} clickable={true} hoverEffect={true} movieId={movie.id} image={IMAGE_BASE_URL+POSTER_SIZE+movie.poster_path}/>
             ))}
         </Grid>
         

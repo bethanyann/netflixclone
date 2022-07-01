@@ -8,7 +8,7 @@ export type Movies = {
 
 export type Movie = {
     backdrop_path: string;
-    id: number;
+    id: string;
     original_title: string;
     overview: string;
     popularity: number;
@@ -20,6 +20,12 @@ export type Movie = {
     runtime: number;
     revenue: number;
     actors: Actor[];
+    genres: Genre[];
+  }
+
+  export type Genre = {
+    id: number,
+    name: string
   }
 
   export type Credits = {

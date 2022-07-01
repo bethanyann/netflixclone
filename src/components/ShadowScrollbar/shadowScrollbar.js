@@ -18,7 +18,6 @@ class ShadowScrollbar extends Component {
     }
 
     renderView({ style, ...props }) {
-       // const { top } = this.state;
         const viewStyle = {
             paddingTop: 0,
             paddingRight: 20,

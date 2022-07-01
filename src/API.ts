@@ -32,6 +32,12 @@ const apiSettings = {
         const data = await fetch(endpoint);
         const json = await data.json();
         return await json;
+    },
+    fetchActorExternalSources: async (actorId: number) => {
+        const endpoint = `${ACTOR_INFO_URL}${actorId}/external_ids?api_keys=${API_KEY}`;
+        const data = await fetch(endpoint);
+        const json = await data.json();
+        return await json;
     }
 
 }

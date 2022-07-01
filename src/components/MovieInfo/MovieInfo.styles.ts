@@ -3,11 +3,11 @@ import styled from 'styled-components';
 import { IMAGE_BASE_URL, BACKDROP_SIZE } from '../../config';
 
 
-interface Wrapper {
+interface IWrapper {
     backdrop: string;
 }
 
-export const Wrapper = styled.div<Wrapper>`
+export const Wrapper = styled.div<IWrapper>`
     background: ${props => props.backdrop ? `url('${IMAGE_BASE_URL}${BACKDROP_SIZE}${props.backdrop}')` : '#000' };
     background-size: cover;
     background-position: center;
@@ -28,7 +28,7 @@ export const Content = styled.div`
     display: flex;
     max-width: var(--maxWidth);
     margin: 0 auto;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.9);
     border-radius: 20px;
 
     @media screen and (max-width: 768px) {
@@ -48,12 +48,20 @@ export const Text = styled.div`
         justify-content: flex-start;
     }
 
+    .movie-info {
+        display: flex;
+        justify-content: space-between;
+        align-content: center;
+        margin-top: 200px;
+        margin-bottom: auto;
+    }
+
     .score {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 35px;
-        height: 35px;
+        width: 38px;
+        height: 38px;
         background: var(--white);
         color: #000;
         font-weight: 800;
@@ -62,17 +70,32 @@ export const Text = styled.div`
     }
 
     .director {
-        margin: 0 0 0 40px;
-
+        :nth-child(2),:nth-child(3),:nth-child(4){
+            margin: 0 0 0 40px;
+        }
         p {
             margin: 0;
+            font-size: var(--fontMed);
         }
     }
 
     h1 {
+        margin-bottom: 0;
         @media screen and (max-width: 768px) {
             font-size: var(--fontBig);
         }
     }
+
+    h2{
+        font-style: italic;
+        margin-top: 0;
+        
+    }
+
+    h3{
+        margin-top: 50px;
+    }
+
+  
 `;
 

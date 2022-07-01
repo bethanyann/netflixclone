@@ -3,9 +3,8 @@
 export const calcTime = (time: number) => {
     const hours = Math.floor(time / 60);
     const minutes = time % 60;
-    const hour = hours > 1 ? "hours" : "hour";
-
-    return `${hours} ${hour} and ${minutes} minutes`;
+    
+    return `${hours}h ${minutes}m`;
 }
 
 //Converts a number to readable USD currency format

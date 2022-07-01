@@ -27,17 +27,18 @@ export const useHomeFetch = () => {
      try {
          setLoading(true);
          setError(false);
-        console.log(searchTerm);
-         const movies = await API.fetchMovies(searchTerm, page);
-         //console.log(movies);
-         
-         setState(prev => ({
-             ...movies,
-             results: page > 1 ? [...prev.results, ...movies.results] : [...movies.results]
-         }));
+        //console.log(searchTerm);
+        
+        const movies = await API.fetchMovies(searchTerm, page);
+        movies.results = movies.results.filter((movie: { poster_path: string; }) => movie.poster_path !== null );
+        console.log(movies);
 
-         // console.log(state);
-         // console.log(state.results);
+        setState(prev => ({
+            ...movies,
+            results: page > 1 ? [...prev.results, ...movies.results] : [...movies.results]
+        }));
+
+        
      } catch(error){
          setError(true);
      }

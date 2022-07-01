@@ -8,7 +8,6 @@ import Grid from './Grid/grid';
 import Spinner from './Spinner/spinner';
 import BreadCrumb from './BreadCrumb/breadcrumb';
 import MovieInfo from './MovieInfo/movieInfo';
-import MovieInfoBar from './MovieInfoBar/movieInfoBar';
 import Actor from './ActorThumbnail/actor';
 //hooks
 import { useMovieFetch } from '../hooks/useMovieFetch';
@@ -34,7 +33,6 @@ const Movie = () => {
             {movie ?
              <>
                 <MovieInfo movie={movie} />
-                <MovieInfoBar movie={movie} />
              </>
              : null
             }

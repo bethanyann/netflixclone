@@ -1,9 +1,9 @@
 import React from 'react';
-import { useParams, Link } from 'react-router-dom'; //this is how you get the movieId prop from the router 
+import { useParams } from 'react-router-dom'; //this is how you get the movieId prop from the router 
+import Moment from 'react-moment';
 //styles
 import { Wrapper, Content, Text } from './ActorInfo.styles';
-import { Scrollbars } from 'react-custom-scrollbars-2';
-import ShadowScrollbar from '../ShadowScrollbar/shadowScrollbar';
+import Scrollbar from '../ShadowScrollbar/shadowScrollbar';
 //API
 import { useActorInfoFetch } from '../../hooks/useActorInfoFetch';
 import { IMAGE_BASE_URL, POSTER_SIZE } from '../../config';
@@ -13,13 +13,14 @@ import Thumbnail from '../MovieThumbnail/thumbnail';
 import NoImage from '../../images/no_image.jpg'
 import NotFound from '../NotFound';
 import IMDBLogo from '../../images/imdb.png';
+import Grid from '../Grid/grid';
 
 const ActorInfo = () => {
 
     const { actorId } = useParams();
     const actorID = Number(actorId);
     const {actorInfo, loading, error} = useActorInfoFetch(actorID);
-
+    
     if(loading) return <div> <Spinner /></div>
     if(error) return <div> Something went wrong... </div>
     
@@ -32,18 +33,18 @@ const ActorInfo = () => {
         <>
         <Wrapper>
             <Content>
-            <Thumbnail actor={true} image={actorInfo?.profile_path ? `${IMAGE_BASE_URL}${POSTER_SIZE}${actorInfo.profile_path}` : NoImage }
+            <Thumbnail hoverEffect={false} image={actorInfo?.profile_path ? `${IMAGE_BASE_URL}${POSTER_SIZE}${actorInfo.profile_path}` : NoImage }
             clickable={false}
             alt='actor-thumb' />
             <Text> 
                 {
                     actorInfo ? 
                     <>
-                    <h1>{actorInfo.name} <a target="_blank" rel="noreferrer nofollow" href={`https://www.imdb.com/name/${actorInfo.imdb_id}`}><img src={IMDBLogo} alt='imdb-logo'/></a> </h1>
+                    <h1>{actorInfo.name}</h1>
                     <h3>BIOGRAPHY</h3>
-                    <ShadowScrollbar  style={{height: 300, right: 0, top: 3}}>
+                    <Scrollbar  style={{height: 300, right: 0, top: 3}}>
                         <p className='actor-bio'>{actorInfo.biography}</p>
-                    </ShadowScrollbar>
+                    </Scrollbar>
                                      
                     <div className="actor-info">
                         <div className="director">
@@ -52,7 +53,14 @@ const ActorInfo = () => {
                         </div>
                         <div className="director">
                             <h3>BIRTHDAY</h3>
-                            <div>{actorInfo.birthday}</div>
+                            <div><Moment format='MMMM DD, YYYY'>{actorInfo.birthday }</Moment></div>
+                        </div>
+                        <div className="director">
+                            <h3>AGE</h3>
+                            <div><Moment fromNow ago>{actorInfo.birthday}</Moment> old</div>
+                        </div>
+                        <div className="imdb-image">
+                            <a target="_blank" rel="noreferrer nofollow" href={`https://www.imdb.com/name/${actorInfo.imdb_id}`}><img src={IMDBLogo} alt='imdb-logo' /></a>
                         </div>
                         
                     </div>
@@ -64,7 +72,12 @@ const ActorInfo = () => {
             </Text>
             </Content>
         </Wrapper>
-        </>
+        <Grid header='Acting Credits'>
+            {actorInfo?.credits.map(movie => (
+                <Thumbnail alt='movie-thumb' key={movie.id} clickable={true} hoverEffect={true} movieId={movie.id} image={movie.poster_path ? IMAGE_BASE_URL+POSTER_SIZE+movie.poster_path : NoImage }/>
+            ))}
+        </Grid>
+    </>
     )
 }
 
