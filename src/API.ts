@@ -1,72 +1,44 @@
 import { SEARCH_BASE_URL, POPULAR_BASE_URL, API_URL, API_KEY, LANGUAGE, ACTOR_INFO_URL, REQUEST_TOKEN_URL, LOGIN_URL, SESSION_ID_URL } from "./config";
+import { Movies, Movie, Credits, Actor, ActorCredits } from "./types/Types";
 
 const apiSettings = {
 //create an object with all of the fetch requests for easier access later 
-    fetchMovies: async (searchTerm: string, page: number | null) => {
-        const endpoint = searchTerm ? `${SEARCH_BASE_URL}${searchTerm}&page=${page}` : `${POPULAR_BASE_URL}&page=${page}`;
+    fetchMovies: async (searchTerm: string, page: number | null): Promise<Movies> => {
+        const endpoint: string = searchTerm ? `${SEARCH_BASE_URL}${searchTerm}&page=${page}` : `${POPULAR_BASE_URL}&page=${page}`;
         const data = await fetch(endpoint);
         const json = await data.json();
         return await json;
     },
-    fetchMovieData: async (movieId: number) => {
-        const endpoint = `${API_URL}movie/${movieId}?api_key=${API_KEY}`;
+    fetchMovieData: async (movieId: number) : Promise<Movie> => {
+        const endpoint: string = `${API_URL}movie/${movieId}?api_key=${API_KEY}`;
         const data = await fetch(endpoint);
         const json = await data.json();
         return await json;
     },
-    fetchMovieCredits: async (movieId: number) => {
-        const endpoint = `${API_URL}movie/${movieId}/credits?api_key=${API_KEY}`;
+    fetchMovieCredits: async (movieId: number) : Promise<Credits> => {
+        const endpoint: string = `${API_URL}movie/${movieId}/credits?api_key=${API_KEY}`;
         const data = await fetch(endpoint);
         const json = await data.json();
         return await json;
     },
-    fetchActorInfo: async (actorId: number) => {
+    fetchActorInfo: async (actorId: number) : Promise<Actor>=> {
         // `${API_URL}person/` // url will look like this: {personID}?api_key=${API_KEY}${LANGUAGE}
-        const endpoint = `${ACTOR_INFO_URL}${actorId}?api_key=${API_KEY}${LANGUAGE}`;
+        const endpoint: string = `${ACTOR_INFO_URL}${actorId}?api_key=${API_KEY}${LANGUAGE}`;
         const data = await fetch(endpoint);
         const json = await data.json();
         return await json;
     },
-    fetchActorInfoMovieCredits: async (actorId: number) => {
-        const endpoint = `${ACTOR_INFO_URL}${actorId}/movie_credits?api_key=${API_KEY}${LANGUAGE}`;
+    fetchActorInfoMovieCredits: async (actorId: number) : Promise<ActorCredits> => {
+        const endpoint: string = `${ACTOR_INFO_URL}${actorId}/movie_credits?api_key=${API_KEY}${LANGUAGE}`;
         const data = await fetch(endpoint);
         const json = await data.json();
         return await json;
     },
-    fetchActorExternalSources: async (actorId: number) => {
-        const endpoint = `${ACTOR_INFO_URL}${actorId}/external_ids?api_keys=${API_KEY}`;
-        const data = await fetch(endpoint);
-        const json = await data.json();
-        return await json;
-    }
-
 }
 
 export default apiSettings;
 
-// const defaultConfig = {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json'
-//     }
-//   };
-  
-//   const apiSettings = {
-//     fetchMovies: async (searchTerm, page) => {
-//       const endpoint = searchTerm
-//         ? `${SEARCH_BASE_URL}${searchTerm}&page=${page}`
-//         : `${POPULAR_BASE_URL}&page=${page}`;
-//       return await (await fetch(endpoint)).json();
-//     },
-//     fetchMovie: async movieId => {
-//       const endpoint = `${API_URL}movie/${movieId}?api_key=${API_KEY}`;
-//       return await (await fetch(endpoint)).json();
-//     },
-//     fetchCredits: async movieId => {
-//       const creditsEndpoint = `${API_URL}movie/${movieId}/credits?api_key=${API_KEY}`;
-//       return await (await fetch(creditsEndpoint)).json();
-//     },
-//     // Bonus material below for login
+  // Bonus material below for login
 //     getRequestToken: async () => {
 //       const reqToken = await (await fetch(REQUEST_TOKEN_URL)).json();
 //       return reqToken.request_token;

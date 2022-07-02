@@ -1,15 +1,15 @@
 
 //Converts time to hours & minutes
-export const calcTime = (time: number) => {
-    const hours = Math.floor(time / 60);
-    const minutes = time % 60;
+export const calcTime = (time: number) : string => {
+    const hours: number = Math.floor(time / 60);
+    const minutes: number = time % 60;
     
     return `${hours}h ${minutes}m`;
 }
 
 //Converts a number to readable USD currency format
-export const convertMoney = (money: number) => {
-    const formatter = new Intl.NumberFormat('en-US', {
+export const convertMoney = (money: number) : string => {
+    const formatter: Intl.NumberFormat = new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: 'USD',
         minimumFractionDigits: 0,
@@ -19,8 +19,8 @@ export const convertMoney = (money: number) => {
 }
 
 //use for session storage
-export const isPersistedState = (stateName: any) => {
+export const isPersistedState = (stateName: string) : any => {
     //gets item from session storage with the name that is passed in
-    const sessionState = sessionStorage.getItem(stateName);
+    const sessionState = sessionStorage.getItem(stateName.toString());
     return sessionState && JSON.parse(sessionState);
 }

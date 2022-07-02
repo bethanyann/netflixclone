@@ -1,13 +1,14 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import API from '../API';
 //helpers
 import { isPersistedState } from '../helpers';
+import { Movies, Movie } from '../types/Types';
 
 //initial state of the movie list to be used to reset stuff
 //the names of these properties match the property values that come back from the api in the movie list 
 const initialState = {
     page: 0,
-    results: [], //property that holds the movies starting with an empty array
+    results: [] as Movie[], //property that holds the movies starting with an empty array
     total_pages: 0,
     total_results: 0
 }
@@ -19,7 +20,7 @@ export const useHomeFetch = () => {
  const [error, setError] = useState(false); //use as a flag to detect error from api
 
  const [isLoadingMore, setIsLoadingMore] = useState(false);
- const [ searchTerm, setSearchTerm ] = useState();
+ const [ searchTerm, setSearchTerm ] = useState('');
 
  //to test if the setSearchTerm effect is working in the search bar
  //console.log(searchTerm);
@@ -30,11 +31,11 @@ export const useHomeFetch = () => {
          setError(false);
         //console.log(searchTerm);
         
-        const movies = await API.fetchMovies(searchTerm, page);
+        const movies : Movies= await API.fetchMovies(searchTerm, page);
         movies.results = movies.results.filter((movie: { poster_path: string; }) => movie.poster_path !== null );
         console.log(movies);
 
-        setState(prev => ({
+        setState( prev => ({
             ...movies,
             results: page > 1 ? [...prev.results, ...movies.results] : [...movies.results]
         }));

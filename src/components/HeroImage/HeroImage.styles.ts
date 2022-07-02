@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-interface ImageWrapper {
+interface Props {
     image: any
 }
 
-export const Wrapper = styled.div<ImageWrapper>`
+export const Wrapper = styled.div<Props>`
     background: linear-gradient(
         to bottom,
         rgba(0, 0, 0, 0) 41%,

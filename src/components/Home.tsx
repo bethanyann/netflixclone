@@ -33,7 +33,7 @@ const Home = () => {
         <SearchBar setSearchTerm={setSearchTerm} />
         <Grid header={ searchTerm ? 'Search Results' : 'Popular Movies'}>
             {state.results.map(movie => (
-                <Thumbnail key={movie.id} clickable={true} hoverEffect={true} movieId={movie.id} image={IMAGE_BASE_URL+POSTER_SIZE+movie.poster_path}/>
+                <Thumbnail alt='movie-thumbnail' key={movie.id} clickable={true} hoverEffect={true} movieId={movie.id} image={IMAGE_BASE_URL+POSTER_SIZE+movie.poster_path}/>
             ))}
         </Grid>
         

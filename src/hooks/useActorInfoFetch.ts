@@ -27,7 +27,7 @@ export const useActorInfoFetch = (actorId:number) => {
                //const actorExternalIds = await API.fetchActorExternalSources(actorId);
 
                 //filter out things without a release date & the role isnt listed 
-                const releasedCredits = actorCredits.cast.filter((movie: { release_date: string; character: string; poster_path: string; }) => movie.release_date !== "" && movie.character !== "" && movie.poster_path !== null );
+                const releasedCredits = actorCredits.cast.filter((movie) => movie.release_date !== "" && movie.character !== "" && movie.poster_path !== null );
                 //order by release date so most recent is first 
                 const sortedCredits = releasedCredits.sort((a: { release_date: string; },b: { release_date: string; }) => Date.parse(b.release_date) - Date.parse(a.release_date));
                 
@@ -45,7 +45,7 @@ export const useActorInfoFetch = (actorId:number) => {
 
         
         //check session storage before calling function to grab actor info
-        const sessionState = isPersistedState(actorId);
+        const sessionState = isPersistedState(actorId.toString());
         if(sessionState){
             console.log('grabbing from session storage');
             setActorInfo(sessionState);

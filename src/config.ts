@@ -1,9 +1,9 @@
 // Config file for TMDB API
 // Link to API docs here for reference/issues:   https://developers.themoviedb.org/
 
-const API_URL:string = 'https://api.themoviedb.org/3/';
-const API_KEY:string | undefined = process.env.REACT_APP_API_KEY;
-const LANGUAGE:string = '&language=en-US'
+const API_URL: string = 'https://api.themoviedb.org/3/';
+const API_KEY: string | undefined = process.env.REACT_APP_API_KEY;
+const LANGUAGE: string = '&language=en-US'
 
 const SEARCH_BASE_URL: string = `${API_URL}search/movie?api_key=${API_KEY}${LANGUAGE}&query=`;
 const POPULAR_BASE_URL: string = `${API_URL}movie/popular?api_key=${API_KEY}${LANGUAGE}`;

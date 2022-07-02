@@ -13,13 +13,17 @@ export type Movie = {
     overview: string;
     popularity: number;
     poster_path: string;
+    tagline: string;
     title: string;
     vote_average: number;
     vote_count: number;
     budget: number;
     runtime: number;
     revenue: number;
-    actors: Actor[];
+    release_date: string;
+    character? : string;
+    actors: Actor[] | Cast[];
+    directors: Crew[];
     genres: Genre[];
   }
 
@@ -35,6 +39,7 @@ export type Movie = {
   }
   
   export type Cast = {
+    id: number;
     character: string;
     credit_id: string;
     name: string;
@@ -42,6 +47,7 @@ export type Movie = {
   }
   
   export type Crew = {
+    id: number;
     job: string;
     name: string;
     credit_id: number;
@@ -64,3 +70,8 @@ export type Movie = {
     imdb_id?: string;
     credits: Movie[]; //I think this is the return type but double check 
   }
+
+  export type ActorCredits = {
+    cast: Movie [];
+  }
+

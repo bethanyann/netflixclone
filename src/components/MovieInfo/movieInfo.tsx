@@ -10,11 +10,15 @@ import { convertMoney, calcTime } from '../../helpers';
 import { IMAGE_BASE_URL, POSTER_SIZE } from '../../config';
 //image
 import NoImage from '../../images/no-image-found.png';
-//types
+
+import { Movie } from '../../types/Types';
+
+interface Props {
+    movie: Movie;
+}
 
 
-
-const MovieInfo = ({movie}:any) => (
+const MovieInfo = ({movie}: Props) => (
     <Wrapper backdrop={movie.backdrop_path}>
         <Content>
             <Thumbnail image={movie.poster_path ? `${IMAGE_BASE_URL}${POSTER_SIZE}${movie.poster_path}` : NoImage }

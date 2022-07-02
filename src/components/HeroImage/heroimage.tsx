@@ -1,15 +1,19 @@
-import React, {useState} from 'react';
-
+import React from 'react';
 //styles
 import { Wrapper, Content, Text } from './HeroImage.styles';
 
+interface Props {
+    image: string;
+    title: string;
+    text: string;
+}
 
-const HeroImage = (prop:any) => (
-    <Wrapper image={prop.image} >
+const HeroImage = (props: Props) => (
+    <Wrapper image={props.image} >
         <Content>
             <Text>
-                <h1>{prop.title}</h1>
-                <p>{prop.text}</p>
+                <h1>{props.title}</h1>
+                <p>{props.text}</p>
             </Text>
         </Content>
     </Wrapper>

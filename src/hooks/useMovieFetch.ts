@@ -4,10 +4,13 @@ import API from '../API';
 //helpers
 import { isPersistedState } from '../helpers';
 //types
-import {Movie} from '../types/Types';
+import {Movie, Cast, Crew} from '../types/Types';
+
+export type MovieState = Movie & { actors: Cast[], directors: Crew[]}
+
 
 export const useMovieFetch = (movieId: number) => {
-    const [ movie, setMovie] = useState<Movie>();
+    const [ movie, setMovie] = useState<MovieState>({} as MovieState);
     const [ loading, setLoading ] = useState(true); //this throws an error if this isn't set to true 
     const [ error, setError ] = useState(false);
 
@@ -43,7 +46,7 @@ export const useMovieFetch = (movieId: number) => {
         }
 
         //check session storage before calling function to grab movie
-        const sessionState = isPersistedState(movieId);
+        const sessionState = isPersistedState(movieId.toString());
         if(sessionState){
             console.log('grabbing from session storage');
             setMovie(sessionState);

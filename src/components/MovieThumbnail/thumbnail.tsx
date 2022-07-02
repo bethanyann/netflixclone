@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { SmallThumbnail, LargeThumbnail, Wrapper } from './Thumb.styles';
 
 //interface for the props being passed in
-interface IThumbnail {
+interface Props {
     image: string,
     movieId?: string | undefined,
     clickable: boolean,
@@ -13,7 +13,7 @@ interface IThumbnail {
 }
 
 //destructuring out the props being passed in so you don't have to do props.image, props.movieId etc
-const Thumbnail = ({ image, movieId, clickable} : IThumbnail) => {
+const Thumbnail = ({ image, movieId, clickable} : Props) => {
 
     return (
         <Wrapper>

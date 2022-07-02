@@ -2,13 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 //styles
 import { Wrapper, Content } from './BreadCrumb.styles';
-import apiSettings from './../../API';
 
-interface IBreadcrumb {
+interface Props{
     movieTitle: string;
 }
 
-const BreadCrumb = ({ movieTitle }: IBreadcrumb) => (
+const BreadCrumb = ({ movieTitle }: Props) => (
     <Wrapper>
         <Content>
             <Link to='/'>

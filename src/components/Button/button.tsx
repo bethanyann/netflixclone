@@ -4,7 +4,7 @@ import { Wrapper } from './Button.styles';
 
 interface IButton {
     text: string,
-    callback: () => {}
+    callback:  () => void
 }
 
 //I guess this is the preferred way to type props in a functional component now, vs doing React.FC<type> like this
