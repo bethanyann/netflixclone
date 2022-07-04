@@ -36,7 +36,7 @@ const Movie = () => {
              : null
             }
             <Grid header='Actors'>
-                {movie ? movie.actors.map(actor => (
+                {movie ? movie.cast.map(actor => (
                    <Actor key={actor.credit_id} actorId={actor.id} name={actor.name} character={actor.character ? actor.character: ""}
                     imageURL= {
                         actor.profile_path ? `${IMAGE_BASE_URL}${POSTER_SIZE}${actor.profile_path}` : NoImage

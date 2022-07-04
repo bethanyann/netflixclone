@@ -12,7 +12,7 @@ const ACTOR_INFO_URL: string = `${API_URL}person/` // url will look like this: {
 //for login as guest session & favoriting movies
 const REQUEST_TOKEN_URL: string = `${API_URL}authentication/token/new?api_key=${API_KEY}`; //https://developers.themoviedb.org/3/authentication/create-request-token
 const LOGIN_URL: string = `${API_URL}authentication/token/validate_with_login?api_key=${API_KEY}`; //https://developers.themoviedb.org/3/authentication/validate-request-token
-const SESSION_ID_URL: string = `${API_KEY}authentication/session/new?api_key=${API_KEY}`; //https://developers.themoviedb.org/3/authentication/create-session
+const SESSION_ID_URL: string = `${API_URL}authentication/session/new?api_key=${API_KEY}`; //https://developers.themoviedb.org/3/authentication/create-session
 
 const IMAGE_BASE_URL: string = `http://image.tmdb.org/t/p/`; //https://developers.themoviedb.org/3/getting-started/images
 //available image sizes for large banner background: w300, w780, w1280, original

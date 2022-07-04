@@ -6,7 +6,7 @@ import { isPersistedState } from '../helpers';
 //types
 import {Movie, Cast, Crew} from '../types/Types';
 
-export type MovieState = Movie & { actors: Cast[], directors: Crew[]}
+export type MovieState = Movie & { cast: Cast[], directors: Crew[]}
 
 
 export const useMovieFetch = (movieId: number) => {
@@ -34,7 +34,7 @@ export const useMovieFetch = (movieId: number) => {
        
                 setMovie({
                     ...movie,
-                    actors: credits.cast,
+                    cast: credits.cast,
                     directors: directors
                 });
 

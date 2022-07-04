@@ -1,6 +1,15 @@
 import { SEARCH_BASE_URL, POPULAR_BASE_URL, API_URL, API_KEY, LANGUAGE, ACTOR_INFO_URL, REQUEST_TOKEN_URL, LOGIN_URL, SESSION_ID_URL } from "./config";
 import { Movies, Movie, Credits, Actor, ActorCredits } from "./types/Types";
 
+
+const defaultConfig = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+};
+
+
 const apiSettings = {
 //create an object with all of the fetch requests for easier access later 
     fetchMovies: async (searchTerm: string, page: number | null): Promise<Movies> => {
@@ -34,6 +43,35 @@ const apiSettings = {
         const json = await data.json();
         return await json;
     },
+    getRequestToken: async () : Promise<string> => {
+        const data = await fetch(REQUEST_TOKEN_URL);
+        const json = await data.json();
+        //console.log(json);
+        return json.request_token;
+    },
+    authenticate: async (requestToken: string, username: string, password: string) => {
+        const bodyData = {
+            username,
+            password,
+            request_token: requestToken
+        };
+
+        // First authenticate the requestToken
+        const data = await (
+            //fetch(endpoint, options)
+            await fetch(LOGIN_URL, { ...defaultConfig, body: JSON.stringify(bodyData)  })
+        ).json();
+        debugger;
+        
+        // Then get the sessionId with the requestToken
+        if (data.success) {
+            const sessionData = await fetch(SESSION_ID_URL, {...defaultConfig, body: JSON.stringify({ request_token: requestToken }) })
+            const sessionId = await sessionData.json();
+            return sessionId;
+        }
+        else return "";
+    },
+    
 }
 
 export default apiSettings;

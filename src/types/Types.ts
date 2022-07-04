@@ -22,7 +22,7 @@ export type Movie = {
     revenue: number;
     release_date: string;
     character? : string;
-    actors: Actor[] | Cast[];
+    cast: Actor[] | Cast[];
     directors: Crew[];
     genres: Genre[];
   }
