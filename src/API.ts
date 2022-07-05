@@ -61,8 +61,6 @@ const apiSettings = {
             //fetch(endpoint, options)
             await fetch(LOGIN_URL, { ...defaultConfig, body: JSON.stringify(bodyData)  })
         ).json();
-        debugger;
-        
         // Then get the sessionId with the requestToken
         if (data.success) {
             const sessionData = await fetch(SESSION_ID_URL, {...defaultConfig, body: JSON.stringify({ request_token: requestToken }) })
@@ -71,50 +69,35 @@ const apiSettings = {
         }
         else return "";
     },
+    rateMovie: async (sessionId: string, movieId: number, value: number) => {
+        const endpoint = `${API_URL}movie/${movieId}/rating?api_key=${API_KEY}&session_id=${sessionId}`;
+          
+        const data = await fetch(endpoint, {
+            ...defaultConfig, 
+            body: JSON.stringify({value})
+        });
+        debugger;
+        const json = await data.json();
+        return await json;
+    },
+    getRatingsData: async (imdbId: string) => {
+        const options = {
+            method: 'GET',
+            headers: {
+                'X-RapidAPI-Key': 'a0598f552bmsh4060223b93bd41cp1cea98jsnfdb4ab41ed48',
+                'X-RapidAPI-Host': 'mdblist.p.rapidapi.com'
+            }
+        };
+        debugger;
+        const endpoint = `https://mdblist.p.rapidapi.com/?i=${imdbId}`;
+        fetch(endpoint, options)
+            .then(response => response.json())
+            .then(response => console.log(response))
+            .catch(err => console.error(err));
+
+    }
     
 }
 
 export default apiSettings;
 
-  // Bonus material below for login
-//     getRequestToken: async () => {
-//       const reqToken = await (await fetch(REQUEST_TOKEN_URL)).json();
-//       return reqToken.request_token;
-//     },
-//     authenticate: async (requestToken, username, password) => {
-//       const bodyData = {
-//         username,
-//         password,
-//         request_token: requestToken
-//       };
-//       // First authenticate the requestToken
-//       const data = await (
-//         await fetch(LOGIN_URL, {
-//           ...defaultConfig,
-//           body: JSON.stringify(bodyData)
-//         })
-//       ).json();
-//       // Then get the sessionId with the requestToken
-//       if (data.success) {
-//         const sessionId = await (
-//           await fetch(SESSION_ID_URL, {
-//             ...defaultConfig,
-//             body: JSON.stringify({ request_token: requestToken })
-//           })
-//         ).json();
-//         return sessionId;
-//       }
-//     },
-//     rateMovie: async (sessionId, movieId, value) => {
-//       const endpoint = `${API_URL}movie/${movieId}/rating?api_key=${API_KEY}&session_id=${sessionId}`;
-  
-//       const rating = await (
-//         await fetch(endpoint, {
-//           ...defaultConfig,
-//           body: JSON.stringify({ value })
-//         })
-//       ).json();
-  
-//       return rating;
-//     }
-//   };

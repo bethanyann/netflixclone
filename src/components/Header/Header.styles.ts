@@ -15,6 +15,12 @@ export const Content = styled.div`
     max-width: var(--maxWidth);
     padding: 20px 0;
     margin: 0 auto; //center the content div itself
+    color: white;
+
+    a {
+        color: var(--white);
+        text-decoration: none;
+    }
 
     @media screen and (max-width: 720px){
       padding: 10px 0;   //decrease size of header on smaller screens

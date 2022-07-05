@@ -6,7 +6,7 @@ import { SmallThumbnail, LargeThumbnail, Wrapper } from './Thumb.styles';
 //interface for the props being passed in
 interface Props {
     image: string,
-    movieId?: string | undefined,
+    movieId?: number | undefined,
     clickable: boolean,
     alt: string,
     hoverEffect: boolean

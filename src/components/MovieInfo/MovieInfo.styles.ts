@@ -49,6 +49,12 @@ export const Text = styled.div`
         justify-content: flex-start;
     }
 
+    .rating {
+        display: flex;
+        justify-content: flex-start;
+        margin-top: 20px;
+    }
+
     .movie-info {
         display: flex;
         justify-content: space-between;

@@ -1,3 +1,4 @@
+
 //Types  //can also use 'interface' here instead of 'types' but types is recommended 
 export type Movies = {
   page: number;
@@ -8,7 +9,7 @@ export type Movies = {
 
 export type Movie = {
     backdrop_path: string;
-    id: string;
+    id: number;
     original_title: string;
     overview: string;
     popularity: number;

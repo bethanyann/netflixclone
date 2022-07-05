@@ -53,7 +53,7 @@ const Login = () => {
     return (
         <Wrapper>
             { error ? <div className='error'>There was an error logging you in</div> : null }
-            
+
             <label>Username: </label>
             <input type='text' value={username} name='username' onChange={handleInput} />
             <label>Password: </label>
