@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Moment from 'react-moment';
 //styles
 import { Wrapper, Content, Text } from './MovieInfo.styles';
@@ -25,7 +25,8 @@ interface Props {
 
 const MovieInfo = ({movie}: Props) => {
     const [user] = useContext(MyContext);
-
+    const [isOpen, setOpen] = useState(false);
+    
     const handleRating = async (rating: number) => {
         const rate = await API.rateMovie(user.sessionId, movie.id, rating);
     }
@@ -106,7 +107,7 @@ const MovieInfo = ({movie}: Props) => {
                         </div>
                         <div className="movie-section">
                             <h3>WATCH TRAILER</h3>
-                            <a href=''><img style={{width:'70px'}}src={Youtube} alt='youtube-logo'/></a>
+			                    <button onClick={()=> setOpen(true)}><img style={{width:'70px'}}src={Youtube} alt='youtube-logo'/></button>
                         </div>
                     </div>
                     {
