@@ -89,7 +89,6 @@ const MovieInfo = ({movie}: Props) => {
                                         : <img className="rotten-tomato-image" src="https://www.rottentomatoes.com/assets/pizza-pie/images/icons/tomatometer/tomatometer-fresh.149b5e8adc3.svg" alt='tomato-icon' />
                                     }
                                     <p className='tomato-rating'>{rating.score}%</p> 
-                                    <span>tomatometer</span>
                                 </div> :
                                 rating.source === 'tomatoesaudience' ? 
                                 <div key={rating.source}> 
