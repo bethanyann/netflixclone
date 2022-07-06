@@ -33,7 +33,7 @@ export const useHomeFetch = () => {
         
         const movies : Movies= await API.fetchMovies(searchTerm, page);
         movies.results = movies.results.filter((movie: { poster_path: string; }) => movie.poster_path !== null );
-        console.log(movies);
+        //console.log(movies);
 
         setState( prev => ({
             ...movies,

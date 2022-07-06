@@ -46,20 +46,42 @@ export const Text = styled.div`
 
     .rating-directors {
         display: flex;
-        justify-content: flex-start;
-    }
+        justify-content: space-between;
 
-    .rating {
-        display: flex;
-        justify-content: flex-start;
-        margin-top: 20px;
+        .score {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            background: var(--lightBlue);
+            color: var(--darkGray);
+            font-weight: 800;
+            border-radius: 50%;
+            margin: 0 auto;
+        }
+
+        @media screen and (max-width: 1100px)
+        {
+            justify-content: space-around;
+
+            h3 {
+                font-size: var(--fontSmall);
+                font-weight: 400;
+            }
+
+            .score{
+                width: 28px;
+                height: 28px;
+            }
+        }
     }
 
     .movie-info {
         display: flex;
         justify-content: space-between;
         align-content: center;
-        margin-top: 200px;
+        margin-top: 70px;
         margin-bottom: auto;
 
         @media screen and (max-width: 1100px){
@@ -68,24 +90,13 @@ export const Text = styled.div`
         }
     }
 
-    .score {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 38px;
-        height: 38px;
-        background: var(--lightBlue);
-        color: var(--darkGray);
-        font-weight: 800;
-        border-radius: 50%;
-        margin: 0;
-        margin-left: 5px;
-    }
+    
 
-    .director {
+    .movie-section {
         :nth-child(2),:nth-child(3),:nth-child(4){
-            margin: 0 0 0 40px;
+            margin: 0 20px 0 20px;
         }
+
         p {
             margin: 0;
             font-size: var(--fontMed);
@@ -96,12 +107,42 @@ export const Text = styled.div`
             }
         }
 
-        .genres:not(:last-child):after {
-                color: var(--lightGreen);
-                content: " + ";
-        }
+        .imdb-image{
 
+            img {
+                width: 65px;
+                height: 40px;
+                margin-top: 10px;
+            }
+
+            @media screen and (max-width: 1100px){
+                img {
+                    width: 50px;
+                    height: 30px;
+                    margin-top: 20px;
+                }
+            }
+        }
+        
+        .genres:not(:last-child):after {
+            color: var(--lightGreen);
+           // white-space: nowrap;
+            content: " + ";
+        }
     }
+
+    .movie-extra {
+        display: flex;
+        justify-content: flex-start;
+   
+        .certification {
+            border-radius: 5px;
+            border: 2px solid var(--lightGreen);
+            padding: 1px 4px;
+            margin-right: 10px;
+        }
+    }
+
 
     h1 {
         margin-bottom: 0;
@@ -138,8 +179,52 @@ export const Text = styled.div`
         margin-left: 20px;
         font-size: 1.3rem;
         align-items: center;
+    }   
+
+   
+    .rotten-tomatoes {
+        display: flex;
+        justify-content: space-between;
+        font-size: x-large;
+        margin-top: 20px;
+    
+
+        .title {
+            margin-bottom: 0;
+        }
+        .rating {
+            display: flex;
+            justify-content: flex-start;
+            margin-top: 10px;
+        }
+
+        .tomato-rating {
+            margin: 0;
+            font-size: xx-large;
+            display: inline;
+        }
+
+
+        .rotten-tomato-image {
+            width: 35px;
+            //height: 30px;
+            display: inline; 
+            margin-right: 5px;
+        }
+
+        .description {
+            display: flex;
+            margin-top: 3px;
+            .text{
+                margin-left: 20px;
+                font-size: initial;
+            }
+        }
     }
 
+    
+
+  
   
 `;
 

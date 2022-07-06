@@ -8,8 +8,9 @@ export type Movies = {
 }
 
 export type Movie = {
-    backdrop_path: string;
     id: number;
+    backdrop_path: string;
+    imdb_id: string;
     original_title: string;
     overview: string;
     popularity: number;
@@ -22,12 +23,14 @@ export type Movie = {
     runtime: number;
     revenue: number;
     release_date: string;
-    character? : string;
+    character?: string;
     cast: Actor[] | Cast[];
     directors: Crew[];
     genres: Genre[];
+    //rename to something better? extra data pulled from RapidAPI
+    extraMovieData: RapidAPIData;
   }
-
+ 
   export type Genre = {
     id: number,
     name: string
@@ -76,3 +79,21 @@ export type Movie = {
     cast: Movie [];
   }
 
+  export type RapidAPIData = {
+    certification?: string; //G, PG, PG-13, R from the RapidAPI
+    trailer?: string; //youtube link from RapidAPI
+    ratings: Rating[];
+    watch_providers: WatchProvider[];
+  }
+
+  export type Rating = {
+    source: string; //imdb, tomatoes, tomatoesaudience, tmdb, metacritic, etc
+    value: number;
+    score: number;
+    votes: number;
+  }
+
+  export type WatchProvider = {
+    id: number;
+    name: string;
+  }

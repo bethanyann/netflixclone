@@ -28,6 +28,8 @@ export const useMovieFetch = (movieId: number) => {
 
                 const movie = await API.fetchMovieData(movieId);
                 const credits = await API.fetchMovieCredits(movieId);
+                //get movie rating and rottentomatoes info here
+                const ratings = await API.getRatingsData(movie.imdb_id);
 
                 //filter out directors only from the crew list in the credits array
                 const directors = credits.crew.filter((member: { job: string; }) => member.job === 'Director');
@@ -35,9 +37,11 @@ export const useMovieFetch = (movieId: number) => {
                 setMovie({
                     ...movie,
                     cast: credits.cast,
-                    directors: directors
+                    directors: directors,
+                    extraMovieData: ratings
                 });
 
+                debugger;
                 setLoading(false);
 
             } catch(error) {

@@ -1,5 +1,17 @@
-import { SEARCH_BASE_URL, POPULAR_BASE_URL, API_URL, API_KEY, LANGUAGE, ACTOR_INFO_URL, REQUEST_TOKEN_URL, LOGIN_URL, SESSION_ID_URL } from "./config";
-import { Movies, Movie, Credits, Actor, ActorCredits } from "./types/Types";
+import { 
+    SEARCH_BASE_URL, 
+    POPULAR_BASE_URL, 
+    API_URL, 
+    API_KEY, 
+    LANGUAGE, 
+    ACTOR_INFO_URL, 
+    REQUEST_TOKEN_URL, 
+    LOGIN_URL, 
+    SESSION_ID_URL, 
+    X_RAPIDAPI_HOST,
+    X_RAPIDAPI_KEY,
+    X_RAPIDAPI_URL } from "./config";
+import { Movies, Movie, Credits, Actor, ActorCredits, RapidAPIData } from "./types/Types";
 
 
 const defaultConfig = {
@@ -76,25 +88,25 @@ const apiSettings = {
             ...defaultConfig, 
             body: JSON.stringify({value})
         });
-        debugger;
         const json = await data.json();
         return await json;
     },
-    getRatingsData: async (imdbId: string) => {
+    getRatingsData: async (imdbId: string) =>  {
+        const apiKey: string = X_RAPIDAPI_KEY ? X_RAPIDAPI_KEY : 'a0598f552bmsh4060223b93bd41cp1cea98jsnfdb4ab41ed48';
         const options = {
             method: 'GET',
             headers: {
-                'X-RapidAPI-Key': 'a0598f552bmsh4060223b93bd41cp1cea98jsnfdb4ab41ed48',
-                'X-RapidAPI-Host': 'mdblist.p.rapidapi.com'
+                'X-RapidAPI-Key': apiKey,
+                'X-RapidAPI-Host': `${X_RAPIDAPI_HOST}`
             }
         };
-        debugger;
-        const endpoint = `https://mdblist.p.rapidapi.com/?i=${imdbId}`;
-        fetch(endpoint, options)
+         //make sure api key has value 
+        const endpoint = `${X_RAPIDAPI_URL}?i=${imdbId}`;
+        const data = await fetch(endpoint, options)
             .then(response => response.json())
-            .then(response => console.log(response))
             .catch(err => console.error(err));
 
+        return data;
     }
     
 }

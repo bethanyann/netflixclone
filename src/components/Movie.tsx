@@ -19,9 +19,10 @@ const Movie = () => {
     const movieID = Number(movieId); //probably a better way to do this 
 
     const {movie, loading, error} = useMovieFetch(movieID);
+    
 
     //use to see structure of movie array options
-    //console.log(movie); 
+    console.log(movie); 
 
     if(loading) return <div> <Spinner /> </div>;
     if(error) return <div> Something went wrong...</div>; //TODO - make an error handler and page to display

@@ -20,6 +20,11 @@ const BACKDROP_SIZE: string = 'w1280';
 //available poster sizes: w92, w154, w342, w500, w780, original
 const POSTER_SIZE: string = 'w780';
 
+//For the RAPID-API Data:
+const X_RAPIDAPI_KEY: string | undefined = process.env.RAPID_API_APP_KEY;
+const X_RAPIDAPI_HOST: string = 'mdblist.p.rapidapi.com';
+const X_RAPIDAPI_URL: string = 'https://mdblist.p.rapidapi.com/';
+
 export { 
     API_URL, 
     API_KEY, 
@@ -32,5 +37,8 @@ export {
     BACKDROP_SIZE,
     POSTER_SIZE,
     ACTOR_INFO_URL, 
-    LANGUAGE 
+    LANGUAGE,
+    X_RAPIDAPI_HOST,
+    X_RAPIDAPI_KEY,
+    X_RAPIDAPI_URL
  };

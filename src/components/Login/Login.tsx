@@ -33,7 +33,7 @@ const Login = () => {
             const requestToken = await API.getRequestToken();
             const sessionId = await API.authenticate(requestToken, username, password);
            
-            console.log(sessionId); 
+            //console.log(sessionId); 
 
             if(sessionId.success) {
                 //set user with the context

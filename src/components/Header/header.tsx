@@ -12,7 +12,7 @@ import { Wrapper, Content, LogoImg, TMDBLogoImg } from './Header.styles';
 const Header = () => {
     //grab user from the context
     const [user] = useContext(MyContext);
-console.log(user);
+    //console.log(user);
     return(
         <Wrapper>
             <Content>
