@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import Moment from 'react-moment';
+import ReactModal from 'react-modal';
 //styles
 import { Wrapper, Content, Text } from './MovieInfo.styles';
 //component
@@ -7,7 +8,7 @@ import Thumbnail from '../MovieThumbnail/thumbnail';
 import Rate from '../Rating/rating';
 import IMDBLogo from '../../images/imdb.png';
 //utils
-import { convertMoney, calcTime } from '../../helpers';
+import { convertMoney, calcTime, embedTrailer } from '../../helpers';
 //config
 import { IMAGE_BASE_URL, POSTER_SIZE } from '../../config';
 //context
@@ -104,10 +105,13 @@ const MovieInfo = ({movie}: Props) => {
                                 <p className="text">AUDIENCE SCORE</p>
                             </div>
                         </div>
-                        <div className="movie-section">
+                       { movie.extraMovieData.trailer && 
+                            <div className="movie-section">
                             <h3>WATCH TRAILER</h3>
-			                    <button onClick={()=> setOpen(true)}><img style={{width:'70px'}}src={Youtube} alt='youtube-logo'/></button>
-                        </div>
+                                <button style={{cursor:'pointer'}} onClick={()=> setOpen(true)}><img style={{width:'70px'}} src={Youtube} alt='youtube-logo'/></button>
+                                {/* <a href={embedTrailer(movie.extraMovieData.trailer)}><img style={{width:'70px'}} src={Youtube} alt='youtube-logo'/></a> */}
+                            </div>                       
+                       }
                     </div>
                     {
                     /* { only show rating if user is currently logged in } */
@@ -120,6 +124,24 @@ const MovieInfo = ({movie}: Props) => {
                         // </div>
                         // : null
                     }
+                    {isOpen && movie.extraMovieData.trailer ?
+                        <ReactModal isOpen={isOpen} onRequestClose={() => setOpen(false)} 
+                        style={{
+                            content: {
+                                width: 900,
+                                height: 700,
+                                margin: 'auto',
+                                overflow: 'none',
+                                padding: 0,
+                                paddingTop: 20
+                            }
+
+                        }}>
+                            <iframe height='650' width='850' title={`${movie.title} trailer`} src={embedTrailer(movie.extraMovieData.trailer)}></iframe>
+                        </ReactModal> 
+                        : null
+                    }
+
                     <div className="movie-info">
                         <div className="movie-section">
                             <p ><strong>Run Time:  </strong>{calcTime(movie.runtime)}</p>

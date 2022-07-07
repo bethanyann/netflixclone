@@ -18,6 +18,15 @@ export const convertMoney = (money: number) : string => {
     return formatter.format(money);
 }
 
+export const embedTrailer = (trailerUrl : string) : string => {
+    const autoplayValue = "?autoplay=1";
+    const youtubeId = trailerUrl.substring(trailerUrl.indexOf('?v=') + 3);
+    const youtubeEmbedUrl = `https://www.youtube.com/embed/${youtubeId}${autoplayValue}`;
+
+    console.log(youtubeId);
+    return youtubeEmbedUrl;
+}
+
 //use for session storage
 export const isPersistedState = (stateName: string) : any => {
     //gets item from session storage with the name that is passed in
