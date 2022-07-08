@@ -42,7 +42,7 @@ const ActorInfo = () => {
                     <>
                     <h1>{actorInfo.name}</h1>
                     <h3>BIOGRAPHY</h3>
-                    <Scrollbar  style={{height: 300, right: 0, top: 3}}>
+                    <Scrollbar  style={{height: 300, right: 0, top: 15}}>
                         <p className='actor-bio'>{actorInfo.biography}</p>
                     </Scrollbar>
                                      

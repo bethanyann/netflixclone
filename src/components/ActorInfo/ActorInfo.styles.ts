@@ -40,15 +40,15 @@ export const Text = styled.div`
     .actor-info {
         display: flex;
         justify-content: flex-start;
-        margin-top: 30px;
+        margin-top: 100px;
     }
 
     .score {
         display: flex;
         align-items: center;
         justify-content: center;
-      //  width: 40px;
-      //  height: 40px;
+        //  width: 40px;
+        //  height: 40px;
         color: var(--white);
         font-weight: 800;
         margin: 0;
@@ -74,20 +74,24 @@ export const Text = styled.div`
     .actor-bio {
         white-space: pre-wrap;
        
+        p{
+            margin-bottom:2rem;
+        }
     }
 
     img {
         width: 65px;
         height: 40px;
-      //  display: flex;
-        margin-top: 32px;
+        // display: flex;
+        // margin-top: 32px;
         justify-content: end;
     }
 
     .imdb-image{
-       // margin: 0 0 0 40px;
+        // margin: 0 0 0 40px;
         margin-left: auto;
         margin-right: 10px;
+  
     }
 `;
 

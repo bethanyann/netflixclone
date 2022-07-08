@@ -12,6 +12,7 @@ import NotFound from './components/NotFound';
 import Login from './components/Login/Login';
 //styles
 import { GlobalStyle } from './GlobalStyles';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => ( 
    <Router>

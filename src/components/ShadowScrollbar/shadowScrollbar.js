@@ -23,13 +23,13 @@ class ShadowScrollbar extends Component {
             paddingRight: 20,
             paddingLeft: 0,
             paddingBottom: 5,
-            top: -13
+            top: 20
            //color: `rgb(${Math.round(255 - (top * 255))}, ${Math.round(255 - (top * 255))}, ${Math.round(255 - (top * 255))})`
         };
         return (
             <div
                 className="box"
-                style={{ ...style, ...viewStyle }}
+                style={{ ...style, ...viewStyle, inset:'8px 0px 0px' }}
                 {...props}/>
         );
     }

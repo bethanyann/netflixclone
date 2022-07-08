@@ -81,7 +81,7 @@ export const Text = styled.div`
         display: flex;
         justify-content: space-between;
         align-content: center;
-        margin-top: 70px;
+        margin-top: 120px;
         margin-bottom: auto;
 
         @media screen and (max-width: 1100px){
@@ -89,8 +89,6 @@ export const Text = styled.div`
             font-size: var(--fontMed);
         }
     }
-
-    
 
     .movie-section {
         :nth-child(2),:nth-child(3),:nth-child(4){
@@ -124,9 +122,18 @@ export const Text = styled.div`
             }
         }
         
+        .genres {
+            display: inline;
+        }
+
+        /* .genres:hover {
+            cursor: pointer;
+            text-decoration: underline;
+            text-decoration-color: var(--lightGreen);
+        } */
+
         .genres:not(:last-child):after {
             color: var(--lightGreen);
-           // white-space: nowrap;
             content: " + ";
         }
     }
@@ -147,6 +154,7 @@ export const Text = styled.div`
     h1 {
         margin-bottom: 0;
         position: relative;
+        font-size: var(--fontBigger);
 
         @media screen and (max-width: 1100px) {
             font-size: var(--fontBig);
@@ -156,7 +164,7 @@ export const Text = styled.div`
         }
     }
 
-    h2{
+    h2 {
         font-style: italic;
         margin-top: 0;
 
@@ -167,7 +175,7 @@ export const Text = styled.div`
         
     }
 
-    h3{
+    h3 {
         margin-top: 50px;
     }
 
@@ -181,29 +189,23 @@ export const Text = styled.div`
         align-items: center;
     }   
 
-   
     .rotten-tomatoes {
         display: flex;
         justify-content: space-between;
         font-size: x-large;
         margin-top: 20px;
-    
 
-        .title {
-            margin-bottom: 0;
-        }
         .rating {
             display: flex;
-            justify-content: flex-start;
+            justify-content: start;
             margin-top: 10px;
         }
 
-        .tomato-rating {
+        .rating-score {
             margin: 0;
             font-size: xx-large;
             display: inline;
         }
-
 
         .rotten-tomato-image {
             width: 35px;
@@ -212,33 +214,61 @@ export const Text = styled.div`
             margin-right: 5px;
         }
 
-        .description {
+        .rating-description {
             display: flex;
             margin-top: 3px;
-            .text{
-                margin-left: 20px;
-                font-size: initial;
+            .text {
+                font-size: var(--fontSmall);
+            }
+            .text-2 {
+                font-size: var(--fontSmall);
+                margin-left: 25px;
             }
         }
 
-        //react modal styles
-        .ReactModal__Overlay {
-            opacity: 0;
-            transition: opacity 2000ms ease-in-out;
+        @media screen and (max-width: 1100px) {
+            .rating { justify-content: space-between;}
+            .rating-score{ font-size: large;}
+            .rating-description { font-size: small;}
+            .rating-description .text { font-size: small; margin-left: 0px;}
+            .rating-description .text-2 { font-size: small; margin-left: 10px;}
         }
 
-        .ReactModal__Overlay--after-open{
-            opacity: 1;
-        }
+    }
 
-        .ReactModal__Overlay--before-close{
-            opacity: 0;
+    .modal-styles .modal-body {
+        height: 800px !important;
+        padding: 0 !important;
+    }
+
+    .movie-section button {
+        background-color: var(--darkGray);
+        display:flex;
+        justify-content: center;
+        border-radius: 5px;
+        padding: 10px 5px;
+
+        @media screen and (max-width:1100px)
+        {
+            display: none;
         }
     }
 
-    
+    .movie-section .youtube-link {
+        display: none;
 
-  
-  
+        @media screen and (max-width:1100px)
+        {
+            display: flex;
+            justify-content: center;
+        }
+    }
+
+    .youtube-image {
+        width:90px;
+        border-radius: 5px;
+        border: 1px solid var(--lightGreen);
+        padding: 3px;
+    }
 `;
 
