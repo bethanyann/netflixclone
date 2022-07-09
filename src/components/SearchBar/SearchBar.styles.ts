@@ -76,7 +76,7 @@ export const Content = styled.div`
         top: 0px;
         background: #303030;
         font-size: 20px;
-        padding: 14px 0px 15px 0px;
+        padding: 15px 0px 16px 0px;
         align-items: center;
         text-align: center;
         border-top-right-radius: 40px;
@@ -87,7 +87,7 @@ export const Content = styled.div`
         @media screen and (max-width: 768px)
         {
             font-size: 18px;
-            padding: 7px 0px 10px 0px;
+            padding: 8px 0px 10px 0px;
         }
     }
 `;
