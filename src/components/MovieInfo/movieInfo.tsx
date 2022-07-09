@@ -86,7 +86,7 @@ const MovieInfo = ({movie}: Props) => {
                         <div className="movie-section">
                              <h3></h3>
                             <div className="rating">
-                                {movie.extraMovieData.ratings.map((rating) => rating.source === 'tomatoes' ? 
+                            {movie.extraMovieData ? movie.extraMovieData.ratings.map((rating) => rating.source === 'tomatoes' ? 
                                 <div key={rating.source}>
                                     {rating.score < 40 ? 
                                         <img className="rotten-tomato-image" src="https://www.rottentomatoes.com/assets/pizza-pie/images/icons/tomatometer/tomatometer-rotten.f1ef4f02ce3.svg" alt='tomato-icon' />
@@ -99,7 +99,7 @@ const MovieInfo = ({movie}: Props) => {
                                     <img className="rotten-tomato-image" style={{marginLeft: '20px'}} src="https://www.rottentomatoes.com/assets/pizza-pie/images/icons/audience/aud_score-fresh.6c24d79faaf.svg" alt='audience-icon' />
                                     <p className='rating-score'>{rating.score}%</p> 
                                 </div> : null
-                                )}
+                            ) : null}
                             </div>
                             <div className="rating-description">
                                 <p className="text">TOMATOMETER</p>
