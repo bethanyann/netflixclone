@@ -41,7 +41,6 @@ export const useMovieFetch = (movieId: number) => {
                     extraMovieData: ratings
                 });
 
-                debugger;
                 setLoading(false);
 
             } catch(error) {

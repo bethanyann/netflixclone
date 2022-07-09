@@ -11,7 +11,7 @@ import {
     X_RAPIDAPI_HOST,
     X_RAPIDAPI_KEY,
     X_RAPIDAPI_URL } from "./config";
-import { Movies, Movie, Credits, Actor, ActorCredits, RapidAPIData } from "./types/Types";
+import { Movies, Movie, Credits, Actor, ActorCredits } from "./types/Types";
 
 
 const defaultConfig = {
@@ -38,6 +38,12 @@ const apiSettings = {
     },
     fetchMovieCredits: async (movieId: number) : Promise<Credits> => {
         const endpoint: string = `${API_URL}movie/${movieId}/credits?api_key=${API_KEY}`;
+        const data = await fetch(endpoint);
+        const json = await data.json();
+        return await json;
+    },
+    fetchMovieByGenreSearch: async (genreId: number) : Promise<Movie> => {
+        const endpoint: string = `${API_URL}/discover/movie?api_key=${API_KEY}&with_genres=${genreId}`;
         const data = await fetch(endpoint);
         const json = await data.json();
         return await json;
@@ -92,15 +98,15 @@ const apiSettings = {
         return await json;
     },
     getRatingsData: async (imdbId: string) =>  {
-        const apiKey: string = X_RAPIDAPI_KEY ? X_RAPIDAPI_KEY : 'a0598f552bmsh4060223b93bd41cp1cea98jsnfdb4ab41ed48';
+
         const options = {
             method: 'GET',
             headers: {
-                'X-RapidAPI-Key': apiKey,
+                'X-RapidAPI-Key': `${X_RAPIDAPI_KEY}`,
                 'X-RapidAPI-Host': `${X_RAPIDAPI_HOST}`
             }
         };
-         //make sure api key has value 
+
         const endpoint = `${X_RAPIDAPI_URL}?i=${imdbId}`;
         const data = await fetch(endpoint, options)
             .then(response => response.json())

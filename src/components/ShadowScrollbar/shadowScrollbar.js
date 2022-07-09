@@ -1,4 +1,3 @@
-import css from 'dom-css';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Scrollbars } from 'react-custom-scrollbars-2';
@@ -24,7 +23,7 @@ class ShadowScrollbar extends Component {
             paddingLeft: 0,
             paddingBottom: 5,
             top: 20
-           //color: `rgb(${Math.round(255 - (top * 255))}, ${Math.round(255 - (top * 255))}, ${Math.round(255 - (top * 255))})`
+
         };
         return (
             <div

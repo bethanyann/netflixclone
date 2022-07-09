@@ -21,7 +21,7 @@ const BACKDROP_SIZE: string = 'w1280';
 const POSTER_SIZE: string = 'w780';
 
 //For the RAPID-API Data:
-const X_RAPIDAPI_KEY: string | undefined = process.env.RAPID_API_APP_KEY;
+const X_RAPIDAPI_KEY: string | undefined = process.env.REACT_APP_RAPID_API_KEY;
 const X_RAPIDAPI_HOST: string = 'mdblist.p.rapidapi.com';
 const X_RAPIDAPI_URL: string = 'https://mdblist.p.rapidapi.com/';
 
