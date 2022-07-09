@@ -22,6 +22,10 @@ export const Wrapper = styled.div<Props>`
             opacity: 1;
         }
     }
+
+    @media screen and (max-width: 768px){
+        padding: 20px 10px;
+    }
 `;
 
 export const Content = styled.div`
@@ -44,6 +48,9 @@ export const Text = styled.div`
     color: var(--white);
     overflow: hidden;
 
+    @media screen and (max-width: 768px){
+        padding: 10px 15px;
+    }
     .rating-directors {
         display: flex;
         justify-content: space-between;
@@ -85,8 +92,9 @@ export const Text = styled.div`
         margin-bottom: auto;
 
         @media screen and (max-width: 1100px){
-            margin-top: 60px;
+            margin-top: 45px;
             font-size: var(--fontMed);
+            justify-content: space-around;
         }
     }
 
@@ -136,6 +144,20 @@ export const Text = styled.div`
             color: var(--lightGreen);
             content: " + ";
         }
+
+        @media screen and (max-width: 786px)
+        {
+            margin: 0;
+
+            :nth-child(2),:nth-child(3),:nth-child(4){
+                margin: 0 0 0 15px;
+            }
+
+            h3 {
+                font-size: var(--fontSmall);
+                font-weight: 400;
+            }
+        }
     }
 
     .movie-extra {
@@ -177,6 +199,10 @@ export const Text = styled.div`
 
     h3 {
         margin-top: 50px;
+
+        @media screen and (max-width:768px) {
+            margin-top: 30px;
+        }
     }
 
     span {
@@ -227,11 +253,12 @@ export const Text = styled.div`
         }
 
         @media screen and (max-width: 1100px) {
-            .rating { justify-content: space-between;}
-            .rating-score{ font-size: large;}
-            .rating-description { font-size: small;}
-            .rating-description .text { font-size: small; margin-left: 0px;}
-            .rating-description .text-2 { font-size: small; margin-left: 10px;}
+            .rating { justify-content: space-evenly; }
+            .rating-score { font-size: large; }
+            .rating-description { font-size: small; }
+            .rating-description .text { font-size: small; margin-left: 0px; }
+            .rating-description .text-2 { font-size: small; margin-left: 10px; }
+            .rotten-tomato-image { margin-left: 7px; }
         }
 
     }
