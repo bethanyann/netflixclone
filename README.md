@@ -1,6 +1,7 @@
+#####GIF demo of the project: 
 ![](src/images/react_movie_demo.gif)
 
-About the Project:
+#####About the Project:
 
 This is a sort of netflix-clone type 'movie database' project with these basic functionalities:
   1. The site's main page is located here:  https://thebethanyann-netflixclone.netlify.app/
@@ -11,11 +12,11 @@ This is a sort of netflix-clone type 'movie database' project with these basic f
   6. Underneath each movie is a comprehensive list of the cast, and each cast photo is a clickable link that will navigate to an individual Actor's page
   7. Each Actor's page will display their name, birthday & age, and a biography if avalible, and also includes a grid of movie thumbnails that they appear in.
 
-I used two APIs for this project:
+#####I used two APIs for this project:
   1. The Movie Database for the bulk of the movie data which can be found here: https://www.themoviedb.org/documentation/api?language=en-US  
   2. MDBList on RapidAPI for the rotten tomatos rating system and youtube trailer link which can be found here: https://rapidapi.com/linaspurinis/api/mdblist/
   
-This is a personal project for the purpose of practicing unfamiliar React concepts like hooks and using fetch to get API data, and is a work in progress.  
+#####This is a personal project for the purpose of practicing unfamiliar React concepts like hooks and using fetch to get API data, and is a work in progress.  
 
 This is a list of things I'd like to add to this project over time: 
 
