@@ -1,4 +1,4 @@
-![](https://github.com/bethanyann/netflixclone/src/images/react_movie_demo.gif)
+![](https://github.com/bethanyann/netflixclone/tree/master/src/imagesreact_movie_demo.gif)
 
 About the Project:
 
