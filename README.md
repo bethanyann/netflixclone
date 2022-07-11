@@ -1,4 +1,4 @@
-![](src/imagesreact_movie_demo.gif)
+![](src/images/react_movie_demo.gif)
 
 About the Project:
 
